@@ -143,12 +143,6 @@ main .title-container h2{
     cursor: pointer;
 }
 
-.modal-change{
-    /* MODAL OFF */
-    --d-menu: flex;
-    --d-close: none;
-}
-
 .social-media-container{
     margin: 80px auto 8px auto;
     display: flex;
@@ -161,13 +155,17 @@ footer{
     text-align: center;
 }
 
-/* ATENDIMENTO */
+/* ATENDIMENTO MODAL */
 
 .atendimento{
     display: none;
 }
 
-.btn label:has(.atendimento:checked) + .atendimento-modal{
+/* .btn label:has(.atendimento:checked) + .atendimento-modal{
+    display: flex;
+} */
+
+.btn label + .atendimento:checked + .atendimento-modal{
     display: flex;
 }
 
@@ -248,3 +246,5 @@ footer{
 .close-modal-btn .close{
     display: none;
 }
+
+/* ATENDIMENTO MODAL */
