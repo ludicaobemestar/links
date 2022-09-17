@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludicão | Bem-Estar e Educação Canina</title>
+    <title>Ludicão | Educação e Bem-Estar Canino</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Atma&family=Poppins&display=swap" rel="stylesheet">  
@@ -29,7 +29,7 @@
                 <label for="atendimento-open-close" id="atendimento-btn">Atendimento
                 </label> 
                 <input type="checkbox" id="atendimento-open-close" 
-                    class="atendimento"
+                    class="check-modal"
                     name="atendimento" />
                 <!-- ATENDIMENTO MODAL -->
                 <div class="atendimento-modal">
@@ -38,8 +38,6 @@
                             <img src="img/dogfone.webp"  width="62" height="62" alt="" />
                         </div>
                         <label for="atendimento-open-close" class="close-modal-btn">
-                            <input type="checkbox" name="close" 
-                            class="close" id="atendimento-open-close"/>
                             <img src="img/close.svg" alt="">               
                         </label>
                         <a href="#">ATENDIMENTO PRESENCIAL</a>
@@ -70,18 +68,49 @@
         <ul class="social-media-container">
             <li class="icon-container">
                 <a href="#">
-                    <img src="img/tiktok.svg" alt="">   
+                    <img src="img/icons8-tiktok (1).svg" alt="">   
                 </a>
             </li>
             <li class="icon-container">
                 <a href="#">
-                    <img src="img/mail.svg" alt="">
+                    <img src="img/icons8-whatsapp (1).svg" alt="">
                 </a>
+            </li>
+            <li class="icon-container">
+                <a href="#">
+                    <img src="img/icons8-youtube (1).svg" alt="">
+                </a>
+            </li>
+            <li class="icon-container">
+                <label for="email-open-close" id="email-btn">
+                    <img src="img/mail.svg" alt="">
+                </label> 
+                <input type="checkbox" id="email-open-close" 
+                    class="check-modal"
+                    name="email" />
+                <!-- EMAIL MODAL -->
+                <div class="email-modal">
+                    <div class="email-container">
+                        <div class="btn-icon btn-icon-modal">
+                            <img src="img/dogfone.webp"  width="62" height="62" alt="" />
+                        </div>
+                        <label for="email-open-close" class="close-modal-btn">
+                            <img src="img/close.svg" alt="">               
+                        </label>
+                        <p class="email-endereco">ludicaobemestar@gmail.com</p>
+                        <div class="copiar">
+                            <span><img src="img/copy.svg" alt="" srcset=""></span>
+                            <button>Copiar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- EMAIL MODAL -->
             </li>
         </ul>
         <footer>
             <a href="#">@ludicaobemestar</a>
         </footer>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
