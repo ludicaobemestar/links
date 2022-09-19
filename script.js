@@ -26,7 +26,7 @@ function copyToClipboard(){
         setTimeout(()=>{
             toast.classList.remove('active')  
             btnCopiar.classList.remove('copied')
-        }, 2500) 
+        }, 1500) 
     });
 }
 

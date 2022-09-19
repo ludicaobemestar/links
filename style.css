@@ -245,7 +245,7 @@ footer{
     content:'';
     width: 180px;
     height: 2px;
-    background-color: #D9D9D9;
+    background-color: #efd9ff;
     position: absolute;
     right: -59px;
     margin-top: 4px;
@@ -282,11 +282,11 @@ footer{
 }
 
 .email-container{
-    padding: 12px 12px 4px 12px;
+    padding: 12px 0px 4px 0px;
 }
 
 .email-container p{
-    padding-top: 8px;
+    padding: 8px 12px 0px 12px;
     text-transform: lowercase;
 
 }
@@ -343,25 +343,21 @@ footer{
     font-size: .75rem;
     color: var(--cor-text);
     padding: 12px;
-    /* opacity: 0;
-    transform: scale(.8); */
 }
 
 .toast-copied.active{
     display: block;
-    animation: upToast .3s forwards;
-    animation: downToast .3s forwards 1s;
+    animation: upToast .3s forwards,
+            downToast .3s forwards 1.3s;
 
 }
 
 @keyframes upToast{
     from{
         opacity: 0;
-        scale: .8;
-        transform: translateY(-50px);
+        transform: translateY(50px);
     }to{
         opacity: 1;
-        scale: 1;
         transform: translateY(0);
     }
 }
