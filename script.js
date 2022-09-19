@@ -17,8 +17,16 @@ closeModal(modalEmail, checkboxModalEmail)
 function copyToClipboard(){
     const btnCopiar = document.querySelector('.copiar');
     const email = document.querySelector('.email-endereco');
+    const toast = document.querySelector('.toast-copied');
+
     btnCopiar.addEventListener('click',()=> {
         window.navigator.clipboard.writeText(email.innerText);
+        toast.classList.add('active')
+        btnCopiar.classList.add('copied')
+        setTimeout(()=>{
+            toast.classList.remove('active')  
+            btnCopiar.classList.remove('copied')
+        }, 2500) 
     });
 }
 

@@ -142,34 +142,39 @@ main .title-container h2{
 }
 
 .btn a:active,
-.btn #atendimento-btn:active{
-    outline: 2px solid rgb(161, 114, 184);
+.btn a:focus,
+.btn a:hover,
+.btn #atendimento-btn:active,
+.btn #atendimento-btn:focus,
+.btn #atendimento-btn:hover{
+    outline: 1px solid rgb(161, 114, 184);
     background-color: #F3E7FD;
-
-}
-
-.btn a::selection{
-    background-color: #66368B;
+    transition: .2s;
 }
 
 .social-media-container{
     margin: 80px auto 8px auto;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     gap:1rem;
 }
 
-.social-media-container a img{
-    filter: drop-shadow(1px 1px 1px rgba(82, 27, 110, 0.505)) opacity(.5);
+.social-media-container .icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.social-media-container .social-media-icon{
+    filter: drop-shadow(1px 1px 1px rgba(82, 27, 110, 0.505)) opacity(1);
     
     transition: .3s;
 }
 
-.social-media-container a img:hover
+.social-media-container .social-media-icon:hover
 {
-    scale: 1.08;
-    filter: drop-shadow(2px 2px 1px rgba(82, 27, 110, 0.505)) opacity(1);
+    scale: 1.1;
+    filter: drop-shadow(2px 2px 1px rgba(82, 27, 110, 0.505));
     transition: .3s;
 }
 
@@ -197,6 +202,7 @@ footer{
     justify-content: center;
     z-index: 1000;
     padding: 2rem calc(4rem + 15px) 2rem 4rem;
+    padding: 2rem 4rem;
     opacity: 0;
 
 }
@@ -295,12 +301,74 @@ footer{
     border-radius: 5px;
     border: 1px solid var(--cor-borderButton);
     width: 80%;
+    cursor: pointer;
+    transition: .2s;
 }
 
+.copiar:active{
+    scale: 1.05;
+    transition: .2s;
+}
 
-.email-modal button{
+.copiar.copied{
+    pointer-events: none;
+    opacity: .3;
+}
+
+.copiar button{
     border: none;
     height: 2rem;
+    background-color: transparent;
     font-size: .7rem;
     text-transform: uppercase;
+    cursor: pointer;
+}
+
+.copiar button::before{
+    content:'COPIAR';
+}
+
+.copiar.copied button::before{
+    content:'COPIADO';
+}
+
+.email-modal .toast-copied{
+    background: var(--cor-bgButton);
+    border: 2px solid var(--cor-borderButton);
+    border-radius: 5px;
+    display: none;
+    position: fixed;
+    bottom: 12px;
+    font-family: 'Poppins';
+    font-size: .75rem;
+    color: var(--cor-text);
+    padding: 12px;
+    /* opacity: 0;
+    transform: scale(.8); */
+}
+
+.toast-copied.active{
+    display: block;
+    animation: upToast .3s forwards;
+    animation: downToast .3s forwards 1s;
+
+}
+
+@keyframes upToast{
+    from{
+        opacity: 0;
+        scale: .8;
+        transform: translateY(-50px);
+    }to{
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes downToast{
+    to{
+        opacity: 0;
+        transform: translateY(50px);
+    }
 }
