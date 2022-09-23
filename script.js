@@ -19,7 +19,7 @@ function copyToClipboard(){
     const email = document.querySelector('.email-endereco');
     const toast = document.querySelector('.toast-copied');
 
-    btnCopiar.addEventListener('click',()=> {
+    btnCopiar?.addEventListener('click',()=> {
         window.navigator.clipboard.writeText(email.innerText);
         toast.classList.add('active')
         btnCopiar.classList.add('copied')
@@ -31,3 +31,36 @@ function copyToClipboard(){
 }
 
 copyToClipboard()
+
+const btnEnviar = document.getElementById('btnEnviar')
+btnEnviar.addEventListener('click',e=>{
+    e.preventDefault();
+    const nome = document.getElementById('nome').value
+    const email = document.getElementById('email').value
+    const msg = document.getElementById('msg').value
+
+    if(nome && email && msg){
+        enviarMensagem(nome, email, msg)
+    } 
+})
+ 
+ async function enviarMensagem(nome, email, msg){
+     const {addDoc, collection, db} = await import('./firebase.js')
+     const data = new Date();
+     const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
+     const dia = String(data.getDate()).padStart(2, '0');
+     const mes = String(data.getMonth() + 1).padStart(2, '0');
+     const ano = data.getFullYear();
+     const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
+     try {
+         const docRef = await addDoc(collection(db, "Mensagens"), {
+         Nome: nome,
+         Email: email,
+         Mensagem: msg,
+         DataDeEnvio: dataAtual
+         });
+         console.log("Mensagem enviada com ID: ", docRef.id);
+     } catch (e) {
+         console.error("Erro ao enviar mensagem: ", e);
+     }
+ }

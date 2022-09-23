@@ -103,11 +103,22 @@
                         <label for="email-open-close" class="close-modal-btn">
                             <img src="img/close.svg" alt="">               
                         </label>
-                        <p class="email-endereco">ludicaobemestar@gmail.com</p>
-                        <div class="copiar">
-                            <span><img src="img/copy.svg" alt="" srcset=""></span>
-                            <button></button>
-                        </div>
+                        <p class="email-text">Envie sua mensagem, responderemos em até 48h.</p>
+                        <form id="mensagem">
+                            <label for="nome">
+                                <span>Nome</span>
+                                <input type="text" name="nome" id="nome" />
+                            </label>
+                            <label for="email">
+                                <span>Email</span>
+                                <input type="email" name="email" id="email" />
+                            </label>
+                            <label for="msg">
+                                <span>Mensagem</span>
+                                <textarea id="msg" name="msg"></textarea>
+                            </label>
+                            <button id="btnEnviar">Enviar</button>
+                        </form>
                     </div>
                     <div class="toast-copied">
                         <p>✅ Email copiado para área de transferência</p>
@@ -120,6 +131,6 @@
             <a href="#">@ludicaobemestar</a>
         </footer>
     </main>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
