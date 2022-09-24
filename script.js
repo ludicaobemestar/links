@@ -14,36 +14,46 @@ const checkboxModalEmail = document.getElementById('email-open-close')
 
 closeModal(modalEmail, checkboxModalEmail)
 
-// function copyToClipboard(){
-//     const btnCopiar = document.querySelector('.copiar');
-//     const email = document.querySelector('.email-endereco');
-//     const toast = document.querySelector('.toast-copied');
+function copyToClipboard(){
+    const btnCopiar = document.querySelector('.copiar');
+    const email = document.querySelector('.email-endereco');
+    const toast = document.querySelector('.toast-copied');
 
-//     btnCopiar?.addEventListener('click',()=> {
-//         window.navigator.clipboard.writeText(email.innerText);
-//         toast.classList.add('active')
-//         btnCopiar.classList.add('copied')
-//         setTimeout(()=>{
-//             toast.classList.remove('active')  
-//             btnCopiar.classList.remove('copied')
-//         }, 1500) 
-//     });
-// }
+    btnCopiar?.addEventListener('click',()=> {
+        window.navigator.clipboard.writeText(email.innerText);
+        toast.classList.add('active')
+        btnCopiar.classList.add('copied')
+        setTimeout(()=>{
+            toast.classList.remove('active')  
+            btnCopiar.classList.remove('copied')
+        }, 1500) 
+    });
+}
 
-// copyToClipboard()
+copyToClipboard()
 
 const btnEnviar = document.getElementById('btnEnviar')
-btnEnviar.addEventListener('click',e=>{
-    e.preventDefault();
-    const nome = document.getElementById('nome').value
-    const email = document.getElementById('email').value
-    const msg = document.getElementById('msg').value
+const form = document.getElementById('mensagem')
 
-    if(nome && email && msg){
-        enviarMensagem(nome, email, msg)
-    } 
+form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const loading = document.querySelector('.loading')
+    const nome = DOMPurify.sanitize(document.getElementById('nome').value)
+    const email = DOMPurify.sanitize(document.getElementById('email').value)
+    const msg = DOMPurify.sanitize(document.getElementById('msg').value)
+
+    if(nome && email && msg.replaceAll(' ','').length !== 0){
+        loading.classList.add('active')
+        const response = await enviarMensagem(nome, email, msg)
+        loading.classList.remove('active')
+        loading.classList.add(response)
+    }else{
+        form.classList.add('error')
+        window.setTimeout(()=>form.classList.remove('error'), 2500)
+    }
 })
  
+
  async function enviarMensagem(nome, email, msg){
      const {addDoc, collection, db} = await import('./firebase.js')
      const data = new Date();
@@ -60,7 +70,9 @@ btnEnviar.addEventListener('click',e=>{
          DataDeEnvio: dataAtual
          });
          console.log("Mensagem enviada com ID: ", docRef.id);
+         return 'done'
      } catch (e) {
          console.error("Erro ao enviar mensagem: ", e);
-     }
+         return 'error'
+     } 
  }

@@ -103,22 +103,35 @@
                         <label for="email-open-close" class="close-modal-btn">
                             <img src="img/close.svg" alt="">               
                         </label>
-                        <p class="email-text">Envie sua mensagem, responderemos em até 48h.</p>
-                        <form id="mensagem">
+                        
+                        <div class="loading">
+                            <p>Enviando mensagem...</p>
+                        </div>
+                        <form id="mensagem" method="post">
+                            <p class="email-text">Envie sua mensagem, responderemos em até 48h.</p>
                             <label for="nome">
                                 <span>Nome</span>
-                                <input type="text" name="nome" id="nome" />
+                                <input type="text" name="nome" id="nome" required/>
                             </label>
                             <label for="email">
                                 <span>Email</span>
-                                <input type="email" name="email" id="email" />
+                                <input type="email" name="email" id="email" required/>
                             </label>
                             <label for="msg">
                                 <span>Mensagem</span>
-                                <textarea id="msg" name="msg"></textarea>
+                                <textarea id="msg" name="msg"></textarea required>
                             </label>
                             <button id="btnEnviar">Enviar</button>
+                            <span class="error">Preencha corretamente...</span>
                         </form>
+                        <div class="email-copy">
+                            <p>Desculpe o transtorno... <br>Ocorreu um erro no envio da mensagem. Por favor, envie para esse e-mail:</p>
+                            <p class="email-endereco">ludicaobemestar@gmail.com</p>
+                            <div class="copiar">
+                                <span><img src="img/copy.svg" alt="" srcset=""></span>
+                                <button></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="toast-copied">
                         <p>✅ Email copiado para área de transferência</p>
@@ -131,6 +144,8 @@
             <a href="#">@ludicaobemestar</a>
         </footer>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script> 
     <script src="script.js" type="module"></script>
+    
 </body>
 </html>
