@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Atma&family=Poppins&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <main>
@@ -32,7 +32,7 @@
                     class="check-modal"
                     name="atendimento" />
                 <!-- ATENDIMENTO MODAL -->
-                <div class="atendimento-modal">
+                <dialog class="atendimento-modal">
                     <div class="atendimento-container">
                         <div class="btn-icon btn-icon-modal">
                             <img src="img/dogfone.webp"  width="62" height="62" alt="" />
@@ -40,10 +40,72 @@
                         <label for="atendimento-open-close" class="close-modal-btn">
                             <img src="img/close.svg" alt="">               
                         </label>
-                        <a href="#">ATENDIMENTO PRESENCIAL</a>
+                        <label for="check-presencial" class="check-modal-btn">ATENDIMENTO PRESENCIAL</label>
+                        <input type="checkbox" id="check-presencial" class="check-modal" />
+                        <div class="atendimento-presencial-container">
+                            <div class="tabs">
+                                <label for="check-adestramento" class="adestra-btn">Adestramento</label>
+                                <label for="check-consulta" class="consulta-btn">Consulta Comportamental</label>
+                            </div>
+                            <input type="radio" 
+                            name="tab" id="check-adestramento" class="check-modal" value="adestramento" />
+                            <section class="adestramento">
+                                <ul>
+                                    <li>Atendimento em domicílio</li>
+                                    <li>Aula de 45 minutos</li>
+                                    <li>Encontros semanais (1x ou 2x por semana)</li>
+                                    <li>É necessário acompanhamento do responsável</li>
+                                    <li>Valor das aulas independente do número de cães</li>
+                                </ul>
+                                <h5 class="adestra-title">REGIÕES ATENDIDAS</h5>
+                                <p>Itanhaém, Peruíbe e Mongaguá</p>
+                                <h5 class="adestra-title">INVESTIMENTO</h5>
+                                <div class="adestra-invest">
+                                    <span>Primeira Visita</span>
+                                    <span>R$40,00</span>
+                                    <span>Pacote c/ 4 aulas</span>
+                                    <span>R$300,00</span>
+                                </div>
+                                <div class="adestra-agende">
+                                    <p>Agende a primeira visita sem compromisso. Essa visita nos ajuda a entender melhor o caso, tirar dúvidas e explicar o treinamento.</p>
+                                </div>
+                                <p>Entre em contato <label for="">clicando aqui</label><br>
+                                ou<br>
+                            pelo nosso <a href="#">Whatsapp</a></p>
+                            </section>
+                            <input type="radio" 
+                            name="tab" id="check-consulta" class="check-modal" 
+                            value="consulta"/>
+                            <section class="consulta">
+                                <ul>
+                                    <li>Atendimento em domicílio</li>
+                                    <li>Aula de 45 minutos</li>
+                                    <li>Encontros semanais (1x ou 2x por semana)</li>
+                                    <li>É necessário acompanhamento do responsável</li>
+                                    <li>Valor das aulas independente do número de cães</li>
+                                </ul>
+                                <h5 class="adestra-title">REGIÕES ATENDIDAS</h5>
+                                <p>Itanhaém, Peruíbe e Mongaguá</p>
+                                <h5 class="adestra-title">INVESTIMENTO</h5>
+                                <div class="adestra-invest">
+                                    <span>Primeira Visita</span>
+                                    <span>R$40,00</span>
+                                    <span>Pacote c/ 4 aulas</span>
+                                    <span>R$300,00</span>
+                                </div>
+                                <div class="adestra-agende">
+                                    <p>Agende a primeira visita sem compromisso. Essa visita nos ajuda a entender melhor o caso, tirar dúvidas e explicar o treinamento.</p>
+                                </div>
+                                <p>Entre em contato <label for="">clicando aqui</label><br>
+                                ou<br>
+                            pelo nosso <a href="#">Whatsapp!</a></p>
+                            </section>
+
+                        </div>
                         <a href="#">ATENDIMENTO ONLINE</a>
                     </div>
-                </div>
+                    
+                </dialog>
                 <!-- ATENDIMENTO MODAL -->
             </li>
             <li class="btn">
@@ -125,7 +187,7 @@
                             <span class="error">Preencha corretamente...</span>
                         </form>
                         <div class="email-copy">
-                            <p>Desculpe o transtorno... <br>Ocorreu um erro no envio da mensagem. Por favor, envie para esse e-mail:</p>
+                            <p class="msg-erro">Desculpe o transtorno... <br>Ocorreu um erro no envio da mensagem. Por favor, envie para esse e-mail:</p>
                             <p class="email-endereco">ludicaobemestar@gmail.com</p>
                             <div class="copiar">
                                 <span><img src="img/copy.svg" alt="" srcset=""></span>
@@ -145,7 +207,7 @@
         </footer>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script> 
-    <script src="script.js" type="module"></script>
+    <script src="./assets/js/script.js" type="module"></script>
     
 </body>
 </html>

@@ -1,3 +1,11 @@
+let module, moduleSuccess
+try{
+    module = await import('./firebase.js')
+    moduleSuccess = true;
+}catch(e){
+    moduleSuccess = false
+}
+
 function closeModal(modal, check){
     modal.addEventListener('click',({target, currentTarget})=>{
         if(target === currentTarget) check.checked = false
@@ -11,6 +19,11 @@ closeModal(modalAtend, checkboxModalAtend)
 
 const modalEmail = document.querySelector('.email-modal')
 const checkboxModalEmail = document.getElementById('email-open-close')
+
+// Caso firebase esteja fora do ar, modal de formulário desativado
+    if(!moduleSuccess) modalEmail.children[0].classList.add('inativo')
+// Caso firebase esteja fora do ar
+
 
 closeModal(modalEmail, checkboxModalEmail)
 
@@ -42,7 +55,7 @@ form.addEventListener('submit',async e=>{
     const email = DOMPurify.sanitize(document.getElementById('email').value)
     const msg = DOMPurify.sanitize(document.getElementById('msg').value)
 
-    if(nome && email && msg.replaceAll(' ','').length !== 0){
+    if(nome && email && msg.trim().replaceAll(' ','').length !== 0){
         loading.classList.add('active')
         const response = await enviarMensagem(nome, email, msg)
         loading.classList.remove('active')
@@ -55,24 +68,24 @@ form.addEventListener('submit',async e=>{
  
 
  async function enviarMensagem(nome, email, msg){
-     const {addDoc, collection, db} = await import('./firebase.js')
-     const data = new Date();
-     const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
-     const dia = String(data.getDate()).padStart(2, '0');
-     const mes = String(data.getMonth() + 1).padStart(2, '0');
-     const ano = data.getFullYear();
-     const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
      try {
-         const docRef = await addDoc(collection(db, "Mensagens"), {
-         Nome: nome,
-         Email: email,
-         Mensagem: msg,
-         DataDeEnvio: dataAtual
-         });
-         console.log("Mensagem enviada com ID: ", docRef.id);
-         return 'done'
+        const {addDoc, collection, db} = module //await import('./firebase.js')
+        const data = new Date();
+        const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
+        const dia = String(data.getDate()).padStart(2, '0');
+        const mes = String(data.getMonth() + 1).padStart(2, '0');
+        const ano = data.getFullYear();
+        const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
+        const docRef = await addDoc(collection(db, "Mensagens"), {
+            Nome: nome,
+            Email: email,
+            Mensagem: msg,
+            DataDeEnvio: dataAtual
+        });
+        console.log("Mensagem enviada com ID: ", docRef.id);
+        return 'done'
      } catch (e) {
-         console.error("Erro ao enviar mensagem: ", e);
-         return 'error'
+        console.error("Erro ao enviar mensagem: ", e);
+        return 'error'
      } 
  }
