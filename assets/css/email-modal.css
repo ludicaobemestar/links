@@ -113,10 +113,6 @@
 
 /* Enviar Mensagem */
 
-.email-modal{
-    padding: 1rem calc(1rem + 15px) 1rem 1rem;
-}
-
 .email-container .email-text{
     padding-left: 4px;
     color:var(--cor-text);
@@ -195,7 +191,7 @@
 #mensagem span{
     margin-left: 4px;
     margin-bottom: 4px;
-    font-size: 10px;
+    font-size: .625rem;
 }
 
 #mensagem input,

@@ -8,7 +8,7 @@ main{
 main .container{
     background-color: var(--cor-bglogo);
     border: 2px solid var(--cor-borderlogo);
-    width: 200px;
+    width: 220px;
     border-radius: 10px;
     margin: 20px auto 0 auto;
 
@@ -29,7 +29,7 @@ main .title-container{
 main .title-container h1{
     font-family: var(--f-ludicao);
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 3rem;
     line-height: 1;
     letter-spacing: 0.02em;
     color: var(--cor-title);
@@ -38,7 +38,7 @@ main .title-container h1{
 main .title-container h2{
     margin-top: 8px;
     font-family: var(--f-ludicao-text);
-    font-size: .875rem;
+    font-size: 1rem;
     line-height: .75;
     letter-spacing: 0.015em;
     color: var(--cor-title);
@@ -89,7 +89,7 @@ main .title-container h2{
     border: 2px solid var(--cor-borderButton);
     border-radius: 5px;
     font-family: 'Poppins';
-    font-size: .75rem;
+    font-size: .825rem;
     text-transform: uppercase;
     color: var(--cor-text);
     padding-left: 52px;
@@ -112,7 +112,7 @@ main .title-container h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:1rem;
+    gap: 1.5rem;
 }
 
 .social-media-container .icon-container {

@@ -6,28 +6,58 @@ try{
     moduleSuccess = false
 }
 
-function closeModal(modal, check){
+function closeModal(modal, email = false){
     modal.addEventListener('click',({target, currentTarget})=>{
-        if(target === currentTarget) check.checked = false
+        if(target === currentTarget){
+            if(email){
+                checkboxesChecked['email-open-close'].checked = false
+                return
+            } 
+            resetOptions()
+            if(response === "done"){
+                console.log(response) // Enviar outra mensagem?
+            } 
+        }
     })
 }
 
+function resetOptions(email = false){
+    for(let item in checkboxesChecked){
+        checkboxesChecked[item].checked = false
+    }
+}
+
+
+// ATENDIMENTO MODAL
 const modalAtend = document.querySelector('.atendimento-modal')
-const checkboxModalAtend = document.getElementById('atendimento-open-close')
+const checkboxesRadios = document.querySelectorAll('.check-modal')
+const checkboxesChecked = {}
+checkboxesRadios.forEach((item)=>{
+    checkboxesChecked[item.id] = item
+})
 
-closeModal(modalAtend, checkboxModalAtend)
+checkboxesChecked['atendimento-open-close'].addEventListener('click',({target})=>{
+    if(!target.checked) resetOptions() 
+})
 
+closeModal(modalAtend)
+
+// FIM ATENDIMENTO MODAL
+
+
+console.log(checkboxesChecked)
+
+// EMAIL MODAL
 const modalEmail = document.querySelector('.email-modal')
-const checkboxModalEmail = document.getElementById('email-open-close')
+closeModal(modalEmail, true)
+//FIM EMAIL MODAL
 
 // Caso firebase esteja fora do ar, modal de formulário desativado
     if(!moduleSuccess) modalEmail.children[0].classList.add('inativo')
 // Caso firebase esteja fora do ar
 
-
-closeModal(modalEmail, checkboxModalEmail)
-
-function copyToClipboard(){
+// COPY TO CLIPBOARD
+(()=>{
     const btnCopiar = document.querySelector('.copiar');
     const email = document.querySelector('.email-endereco');
     const toast = document.querySelector('.toast-copied');
@@ -41,23 +71,24 @@ function copyToClipboard(){
             btnCopiar.classList.remove('copied')
         }, 1500) 
     });
-}
+})()
+// FIM COPY TO CLIPBOARD
 
-copyToClipboard()
-
+// FORMULÁRIO DE MSG
 const btnEnviar = document.getElementById('btnEnviar')
 const form = document.getElementById('mensagem')
+const loading = document.querySelector('.loading')
+let response = null
 
 form.addEventListener('submit',async e=>{
     e.preventDefault();
-    const loading = document.querySelector('.loading')
     const nome = DOMPurify.sanitize(document.getElementById('nome').value)
     const email = DOMPurify.sanitize(document.getElementById('email').value)
     const msg = DOMPurify.sanitize(document.getElementById('msg').value)
 
     if(nome && email && msg.trim().replaceAll(' ','').length !== 0){
         loading.classList.add('active')
-        const response = await enviarMensagem(nome, email, msg)
+        response = await enviarMensagem(nome, email, msg)
         loading.classList.remove('active')
         loading.classList.add(response)
     }else{
@@ -89,3 +120,5 @@ form.addEventListener('submit',async e=>{
         return 'error'
      } 
  }
+
+// FIM FORMULÁRIO DE MSG
