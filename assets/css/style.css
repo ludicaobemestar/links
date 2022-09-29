@@ -21,8 +21,10 @@
 *,
 h1,
 h2,
+h5,
 ul,
-li{
+li,
+p{
     margin: 0;
     padding: 0;
     box-sizing: border-box;

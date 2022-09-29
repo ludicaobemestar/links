@@ -4,9 +4,13 @@
     opacity: 1;
 }
 
-.email-container{
+.icon-container .email-modal{
     padding: 12px 0px 8px 0px;
     text-align: center;
+}
+
+.icon-container .email-container{
+    padding-bottom: 12px;
 }
 
 .email-copy{

@@ -40,15 +40,18 @@
                         <label for="atendimento-open-close" class="close-modal-btn">
                             <img src="img/close.svg" alt="">               
                         </label>
-                        <label for="check-presencial" class="check-modal-btn">ATENDIMENTO PRESENCIAL</label>
                         <input type="checkbox" id="check-presencial" class="check-modal" />
+                        <label for="check-presencial" class="check-modal-btn">ATENDIMENTO PRESENCIAL</label>
                         <div class="atendimento-presencial-container">
-                            <div class="tabs">
-                                <label for="check-adestramento" class="adestra-btn">Adestramento</label>
-                                <label for="check-consulta" class="consulta-btn">Consulta Comportamental</label>
-                            </div>
                             <input type="radio" 
                             name="tab" id="check-adestramento" class="check-modal" value="adestramento" />
+                            <input type="radio" 
+                            name="tab" id="check-consulta" class="check-modal" 
+                            value="consulta"/>
+                            <div class="tabs">
+                                <label for="check-adestramento" class="adestra-btn">Adestramento</label>
+                                <label for="check-consulta" class="consulta-btn">Consulta Comportamental</label>               
+                            </div>
                             <section class="adestramento">
                                 <ul>
                                     <li>Atendimento em domicílio</li>
@@ -73,29 +76,26 @@
                                 ou<br>
                             pelo nosso <a href="#">Whatsapp</a></p>
                             </section>
-                            <input type="radio" 
-                            name="tab" id="check-consulta" class="check-modal" 
-                            value="consulta"/>
                             <section class="consulta">
                                 <ul>
                                     <li>Atendimento em domicílio</li>
-                                    <li>Aula de 45 minutos</li>
-                                    <li>Encontros semanais (1x ou 2x por semana)</li>
-                                    <li>É necessário acompanhamento do responsável</li>
-                                    <li>Valor das aulas independente do número de cães</li>
+                                    <li>Consulta de 1h30</li>
+                                    <li>Encontro único com retorno online/presencial*</li>
+                                    <li>Acompanhamento por Whatsapp durante 30 dias</li>
+                                    <li>Valor independente do número de cães</li>
                                 </ul>
                                 <h5 class="adestra-title">REGIÕES ATENDIDAS</h5>
-                                <p>Itanhaém, Peruíbe e Mongaguá</p>
+                                <p>Itanhaém, Peruíbe, Mongaguá, Paria Grande, São Vicente e Santos</p>
                                 <h5 class="adestra-title">INVESTIMENTO</h5>
                                 <div class="adestra-invest">
-                                    <span>Primeira Visita</span>
-                                    <span>R$40,00</span>
-                                    <span>Pacote c/ 4 aulas</span>
-                                    <span>R$300,00</span>
+                                    <span>Consulta Comportmental  </span>
+                                    <span>R$180,00</span>
+                                    <span>Retorno Presencial</span>
+                                    <span>R$60,00</span>
+                                    <span>Retorno Online</span>
+                                    <span>grátis</span>
                                 </div>
-                                <div class="adestra-agende">
-                                    <p>Agende a primeira visita sem compromisso. Essa visita nos ajuda a entender melhor o caso, tirar dúvidas e explicar o treinamento.</p>
-                                </div>
+                                <p class="retorno">*Retorno apenas se agendado em até 30 dias após a realização da consulta. </p> 
                                 <p>Entre em contato <label for="">clicando aqui</label><br>
                                 ou<br>
                             pelo nosso <a href="#">Whatsapp!</a></p>

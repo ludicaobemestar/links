@@ -17,10 +17,9 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    padding: 2rem calc(4rem + 15px) 2rem 4rem;
-    padding: 2rem 4rem;
+    padding: 1rem calc(1rem + 15px) 1rem 1rem;
+    padding: 2rem .5rem;
     opacity: 0;
-
 }
 
 .atendimento-container,
@@ -66,7 +65,7 @@
     margin-top: 4px;
 }
 
-.atendimento-modal .atendimento-container a,
+.atendimento-modal .atendimento-container > a,
 .check-modal-btn
 {
     border: none;
@@ -100,7 +99,7 @@
 
 /* ATENDIMENTO PRESENCIAL */
 
-#check-presencial:checked + .atendimento-presencial-container{
+#check-presencial:checked ~ .atendimento-presencial-container{
     display: block; 
 }
 
@@ -109,24 +108,115 @@
 }
 
 .atendimento-presencial-container,
-#check-presencial:checked + .atendimento-presencial-container + a{
+#check-presencial:checked ~ .atendimento-presencial-container + a{
     display: none;
+}
+
+#check-presencial:checked + label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#check-presencial:checked + label::before{
+    content:'';
+    background: url('../../img/lefticon.svg');
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    top:-2px;
+    position: relative;
+    margin-right: 4px;
+    filter: opacity(.5);
+}
+
+.atendimento-presencial-container{
+    font-family: 'Roboto';
+    font-size: .825rem;
+    line-height: 1.2;
+    color: #333333;
+    opacity: 0;
+    max-height: 0px;
+    max-width: 0px;
+    overflow: hidden;
+    animation: openModal .2s forwards,
+        showContent .2s .3s forwards;
+
+}
+
+@keyframes openModal {
+    0%{
+        max-height: 0px;
+        max-width: 0px;
+    }50%{
+        max-height: 800px;
+        max-width: 100%;
+    }100%{
+        max-height: 800px;
+        max-width: 100%;
+    }
+}
+
+@keyframes showContent {
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes closeModal {
+    from{
+        opacity: 1;
+        max-height: 800px;
+    }to{
+        opacity: 1;
+        max-height: 0px;
+    }
 }
 
 section.consulta,
 section.adestramento{
     display: none;
+    opacity: 0;
+    overflow: hidden;
+    animation: openModal 1.2s forwards,
+        showContent .2s .5s forwards;
 }
 
-#check-adestramento:checked + section.consulta,
-#check-consulta:checked + section.adestramento
+#check-adestramento:checked ~ section.consulta,
+#check-consulta:checked ~ section.adestramento
 {
+    animation: closeModal .5s .3s forwards;
     display: none;
 }
 
-#check-adestramento:checked + section.adestramento,
-#check-consulta:checked + section.consulta{
+#check-adestramento:checked ~ section.adestramento,
+#check-consulta:checked ~ section.consulta{
     display: block;
+}
+
+#check-adestramento:checked ~ .tabs .adestra-btn,
+#check-consulta:checked ~ .tabs .consulta-btn{
+    color: rgba(25, 1, 44);
+
+}
+
+#check-adestramento:checked ~ .tabs .adestra-btn::after,
+#check-consulta:checked ~ .tabs .consulta-btn::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    margin-top: 4px;
+    background-color: var(--cor-borderButton);
+    
+    display: block;
+    animation: activeTab .2s forwards;
+}
+
+@keyframes activeTab {
+   to{
+    width: 100%;
+   }  
 }
 
 .atendimento-presencial-container label{
@@ -134,24 +224,83 @@ section.adestramento{
 }
 
 .atendimento-presencial-container ul{
-    list-style: disc;
     list-style-position: inside;
+    line-height: 1.3;
+}
+
+.atendimento-presencial-container ul li{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.atendimento-presencial-container ul li::before{
+    content:'';
+    background-color: #c19bdf;
+    width: 6px;
+    height: 2px;
+    border-radius: 3px;
+    display: block;
+
 }
 
 .tabs{
     display: flex;
     justify-content: center;
-    gap:12px;
+    gap:16px;
 }
 
 .tabs label{
     padding: 6px 8px;
     text-align: center;
-    border-bottom: 2px solid var(--cor-borderButton);
-    font-family: 'Poppins';
-    font-size: .75rem;
+    font-family: var(--f-text);
+    font-size: .825rem;
+    color: rgba(25, 1, 44, 0.51);
 }
 
 .atendimento-presencial-container section{
-    padding: 12px 20px;
+    padding: 12px 24px;
 }
+
+.adestra-title{
+    font-family: var(--f-text);
+    font-weight: 700;
+    font-size: .6rem;
+    line-height: 1.5;
+    color: #200436;
+    margin-top: 12px;
+}
+
+.adestra-title + p{
+    margin-top: 4px;
+}
+
+.adestra-invest{
+    margin-top: 4px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: left;
+}
+
+.adestra-agende{
+    background: rgba(215, 185, 238, 0.2);
+    border: 1px solid #D7B9EE;
+    border-radius: 5px;
+    text-align: center;
+    color: #481E68;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+.adestra-invest + p{
+    margin: 12px 0;
+}
+
+.adestra-invest ~ p:not(.retorno){
+    text-align: center;
+}
+
+.adestra-invest ~ p :is(label, a) {
+    text-decoration: underline;
+}
+
