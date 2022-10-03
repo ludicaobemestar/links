@@ -18,6 +18,7 @@
     justify-content: center;
     z-index: 1000;
     padding: 1rem .5rem;
+    padding: 1rem calc(.5rem + 15px) 1rem .5rem;
     opacity: 0;
 }
 
@@ -38,7 +39,7 @@
     padding: 12px 0 4px 0;
     opacity: 0;
     transform: scale(.8);
-    animation: scaleUp .3s forwards;
+    animation: scaleUp .3s .2s forwards;
 }
 
 @keyframes scaleUp {
@@ -98,7 +99,7 @@
 
 /* ATENDIMENTO PRESENCIAL */
 
-#check-presencial:checked ~ .atendimento-presencial-container{
+#presencial-open-close:checked ~ .atendimento-presencial-container{
     /* display: block;  */
     animation: openModal .1s linear forwards,
     showContent .2s .2s forwards;
@@ -115,25 +116,32 @@
     line-height: 1.2;
     color: #333333;
     opacity: 0;
-    max-height: 0px;
-    max-width: 0px;
+    /* max-height: 0px; */
     overflow: hidden;
-    /* animation: closeModal .4s forwards; */
+    animation: closeModal .2s forwards;
 }
 
-#check-presencial:checked ~ .atendimento-presencial-container + a{
+@keyframes closeModal {
+    from{
+        max-height: 600px;
+    }to{
+        max-height: 0px;
+    }
+}
+
+#presencial-open-close:checked ~ .atendimento-presencial-container + a{
     overflow: hidden;
     animation: closeLinkModal .2s forwards;
 }
 
-#check-presencial:checked + label{
+#presencial-open-close:checked + label{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-#check-presencial:checked + label::before{
+#presencial-open-close:checked + label::before{
     content:'';
     background: url('../../img/lefticon.svg');
     width: 18px;
@@ -148,10 +156,10 @@
 @keyframes openModal {
     0%{
         max-height: 0px;
-        max-width: 0px;
+        /* max-width: 0px; */
     }100%{
         max-height: 600px;
-        max-width: 428px;
+        /* max-width: 428px; */
     }
 }
 
@@ -182,27 +190,58 @@ section.adestramento{
 #check-adestramento:checked ~ section.adestramento,
 #check-consulta:checked ~ section.consulta{
     animation: showContent .3s forwards;
-        
     display: block;
 }
 
 #check-adestramento:checked ~ .tabs .adestra-btn,
 #check-consulta:checked ~ .tabs .consulta-btn{
     color: rgba(25, 1, 44);
-
+    background: #EBDBF7
 }
 
-#check-adestramento:checked ~ .tabs .adestra-btn::after,
-#check-consulta:checked ~ .tabs .consulta-btn::after,
-.tabs label:hover::after{
+#check-adestramento:checked ~ .tabs .adestra-btn::before,
+#check-consulta:checked ~ .tabs .consulta-btn::before{
+    background: #9C77B8;
+    outline: .5px solid #9C77B8;
+    transition: .3s;
+}
+
+.tabs{
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    padding: 0 4px;
+}
+
+.tabs label{
+    padding: 6px 8px;
+    display: flex;
+    text-align: center;
+    font-family: var(--f-text);
+    font-size: .765rem;
+    position: relative;
+    color: rgba(25, 1, 44, 0.51);
+    border: 1px solid #D6C0E7;
+    border-radius: 5px;
+    align-items: center;
+    gap:4px;
+}
+
+.tabs label::before{
     content: '';
-    width: 0%;
-    height: 2px;
-    margin-top: 4px;
-    background-color: var(--cor-borderButton);
-    display: block;
-    animation: activeTab .2s forwards;
+    width: 4px;
+    height: 4px;
+    border: 1px solid #66368b77;
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
 }
+
+.tabs label:hover{
+    color: rgba(25, 1, 44);
+}
+
+
 
 @keyframes activeTab {
    to{
@@ -233,29 +272,6 @@ section.adestramento{
     border-radius: 3px;
     display: block;
 
-}
-
-.tabs{
-    display: flex;
-    justify-content: center;
-    gap:16px;
-}
-
-.tabs label{
-    padding: 6px 8px;
-    text-align: center;
-    font-family: var(--f-text);
-    font-size: .825rem;
-    color: rgba(25, 1, 44);
-}
-
-.tabs label::after{
-    content: '';
-    width: 100%;
-    height: 2px;
-    margin-top: 4px;
-    background-color: transparent;
-    display: block;
 }
 
 .atendimento-presencial-container section{
@@ -290,7 +306,7 @@ section.adestramento{
     color: #481E68;
     padding: 12px;
     margin: 12px 0;
-    max-width: 600px;
+    max-width: 462px;
 }
 
 .adestra-invest + p{

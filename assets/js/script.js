@@ -30,9 +30,13 @@ function resetOptions(email = false){
 
 // ATENDIMENTO MODAL
 const modalAtend = document.querySelector('.atendimento-modal')
-const checkboxesRadios = document.querySelectorAll('.check-modal')
+// const checkboxes = document.querySelectorAll('.check-modal')
+const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+
+console.log('check:',checkboxes)
+
 const checkboxesChecked = {}
-checkboxesRadios.forEach((item)=>{
+checkboxes.forEach((item)=>{
     checkboxesChecked[item.id] = item
 })
 
