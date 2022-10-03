@@ -254,7 +254,7 @@ section.adestramento{
 
 .atendimento-presencial-container ul{
     list-style-position: inside;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .atendimento-presencial-container ul li{
@@ -287,11 +287,11 @@ section.adestramento{
 }
 
 .adestra-title + p{
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .adestra-invest{
-    margin-top: 4px;
+    margin-top: 8px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     justify-content: left;
@@ -312,6 +312,11 @@ section.adestramento{
     margin: 12px 0;
 }
 
+p.retorno{
+    font-size: .825rem;
+
+}
+
 .adestra-invest ~ p:not(.retorno){
     text-align: center;
     position: relative;
@@ -329,20 +334,45 @@ section.adestramento{
     margin: auto;
 }
 
-
-
-.adestra-invest ~ p :is(label, a) {
-    text-decoration: underline;
-    position: relative;
+.atendimento-contato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 8px;
 }
 
-.adestra-invest ~ p :is(label, a)::after {
-    content:'';
-    background: url('../../img/opennew.svg') center center;
-    background-size: cover;
-    display: inline-block;
+.atendimento-contato :is(label, a){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--f-text);
+    font-size: .625rem;
     position: relative;
-    bottom: -3px;
-    width: .625rem;
-    height: .625rem;
+    color: rgba(25, 1, 44);
+    padding: 8px 16px;
+    gap: 4px;
+    border: 1px solid #9C77B8;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.atendimento-contato label::before{
+    content:'';
+    background: url('../../img/mail-circle.svg') center center;
+    background-size: cover;
+    display: block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+}
+
+.atendimento-contato a::before{
+    content:'';
+    background: url('../../img/icons8-whatsapp.svg') center center;
+    background-size: cover;
+    display: block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
 }
