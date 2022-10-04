@@ -73,7 +73,8 @@
 
 .check-modal-btn{
     display: block;
-    margin-top: 12px;
+    padding: 12px 20px;
+    margin-top: 8px;
     cursor: pointer;
 }
 
@@ -135,9 +136,21 @@
 
 #presencial-open-close:checked + label{
     display: flex;
+    margin-top: 0px;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+#presencial-open-close:checked + label::after{
+    content:'';
+    width: 186px;
+    height: 2px;
+    background-color: #20043669;
+    display: inline-block;
+    bottom: 10px;
+    right: 77px;
+    position: absolute;
 }
 
 #presencial-open-close:checked + label::before{
@@ -183,7 +196,7 @@ section.consulta,
 section.adestramento{
     display: none;
     opacity: 0;
-    font-size: .965rem;
+    font-size: 1rem;
 }
 
 #check-adestramento:checked ~ section.adestramento,
@@ -195,7 +208,8 @@ section.adestramento{
 #check-adestramento:checked ~ .tabs .adestra-btn,
 #check-consulta:checked ~ .tabs .consulta-btn{
     color: rgba(25, 1, 44);
-    background: #EBDBF7
+    background: #EBDBF7;
+    border: 1px solid rgb(176, 117, 224);
 }
 
 #check-adestramento:checked ~ .tabs .adestra-btn::before,
@@ -217,7 +231,7 @@ section.adestramento{
     display: flex;
     text-align: center;
     font-family: var(--f-text);
-    font-size: .765rem;
+    font-size: .825rem;
     position: relative;
     color: rgba(25, 1, 44, 0.51);
     border: 1px solid #D6C0E7;
@@ -254,7 +268,7 @@ section.adestramento{
 
 .atendimento-presencial-container ul{
     list-style-position: inside;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .atendimento-presencial-container ul li{
@@ -278,23 +292,82 @@ section.adestramento{
 }
 
 .adestra-title{
+    display: flex;
+    gap: 4px;
     font-family: var(--f-text);
     font-weight: 700;
-    font-size: .65rem;
+    font-size: .825rem;
     line-height: 1.5;
     color: #200436;
-    margin-top: 12px;
+    padding-top: 12px;
 }
 
-.adestra-title + p{
+.arrow-down{
+    background: url('../../img/arrow_drop_down.svg') center center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+#regioes + p,
+#regioes-consulta + p{
     margin-top: 8px;
+    max-height: 0px;
+    opacity: 0;
+    overflow: none;
+    display: none;
+}
+
+#regioes:checked + p,
+#regioes-consulta:checked + p{
+    display: block;
+    animation: mostrarP .2s forwards,
+    showContent .2s .1s forwards;
+}
+
+@keyframes mostrarP{
+    from{
+        max-height: 0px;
+    }to{
+        max-height: 50px;
+    }
+}
+
+#investimento + .adestra-invest,
+#investimento-consulta + .adestra-invest{
+    margin-top: 8px;
+    max-height: 0px;
+    opacity: 0;
+    overflow: none;
+    display: none;
+}
+
+#investimento:checked + .adestra-invest,
+#investimento-consulta:checked + .adestra-invest{
+    display: grid;
+    animation: mostrarAdestraInvest .2s forwards,
+    showContent .2s .1s forwards;
+}
+
+@keyframes mostrarAdestraInvest{
+    from{
+        max-height: 0px;
+    }to{
+        max-height: 80px;
+    }
 }
 
 .adestra-invest{
     margin-top: 8px;
     display: grid;
+    gap:4px;
     grid-template-columns: 2fr 1fr;
     justify-content: left;
+}
+
+.adestra-invest p{
+    font-size: .825rem;
+    grid-column: span 2;
 }
 
 .adestra-agende{
@@ -314,7 +387,6 @@ section.adestramento{
 
 p.retorno{
     font-size: .825rem;
-
 }
 
 .adestra-invest ~ p:not(.retorno){
