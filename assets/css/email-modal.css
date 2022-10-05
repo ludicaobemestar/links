@@ -170,11 +170,15 @@
     }
 }
 
-.loading.active + #mensagem,
-.loading.done + #mensagem,
-.loading.error + #mensagem
+#check-mensagem:checked ~ .loading.active + #mensagem,
+#check-mensagem:checked ~ .loading.done + #mensagem,
+#check-mensagem:checked ~ .loading.error + #mensagem
 {
-    display:none;
+    display: none;
+}
+
+#check-email:checked ~ .loading.done{
+    display: none;
 }
 
 .loading.error ~ .email-copy .msg-erro{
@@ -183,7 +187,6 @@
 /* Fim do Loading */
 
 #mensagem{
-    display: grid;
     grid-template-rows: auto 1fr 1fr auto 1fr;
     gap: 12px;
     padding: 0px 12px;

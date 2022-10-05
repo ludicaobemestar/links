@@ -413,14 +413,15 @@ p.retorno{
     justify-content: center;
     align-items: center;
     font-family: var(--f-text);
-    font-size: .625rem;
+    font-size: .825rem;
     position: relative;
     color: rgba(25, 1, 44);
-    padding: 8px 16px;
+    padding: 12px 20px;
     gap: 4px;
-    border: 1px solid #9C77B8;
+    border: 2px solid var(--cor-borderlogo);
     border-radius: 5px;
     text-transform: uppercase;
+    background-color: #faf3ff;
 }
 
 .atendimento-contato label::before{
