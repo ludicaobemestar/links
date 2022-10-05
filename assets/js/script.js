@@ -30,10 +30,9 @@ function resetOptions(email = false){
 
 // ATENDIMENTO MODAL
 const modalAtend = document.querySelector('.atendimento-modal')
-// const checkboxes = document.querySelectorAll('.check-modal')
-const checkboxes = document.querySelectorAll('input[type="checkbox"]')
-
-console.log('check:',checkboxes)
+const checkboxesAndRadios = document.querySelectorAll('.check-modal')
+const checkboxes = Array.from(checkboxesAndRadios).filter((e)=>e.type === "checkbox")
+const radios = Array.from(checkboxesAndRadios).filter((e)=>e.type === "radio")
 
 const checkboxesChecked = {}
 checkboxes.forEach((item)=>{
@@ -48,17 +47,27 @@ closeModal(modalAtend)
 
 // FIM ATENDIMENTO MODAL
 
-
-console.log(checkboxesChecked)
-
 // EMAIL MODAL
 const modalEmail = document.querySelector('.email-modal')
 closeModal(modalEmail, true)
 //FIM EMAIL MODAL
 
 // Caso firebase esteja fora do ar, modal de formulário desativado
-    if(!moduleSuccess) modalEmail.children[0].classList.add('inativo')
+function desativarMensagem(){
+    const contatoForm = radios.find((e)=>e.id === "check-mensagem")
+    const contatoFormBtn = document.querySelector('.mensagem-btn')
+    const contatoEmail = radios.find((e)=>e.id === "check-email")
+    contatoForm.checked = false
+    contatoEmail.checked = true
+    contatoFormBtn.classList.add('disable')
+}
+
+    if(!moduleSuccess){
+        desativarMensagem()
+        modalEmail.children[0].classList.add('inativo')
+    } 
 // Caso firebase esteja fora do ar
+
 
 // COPY TO CLIPBOARD
 (()=>{
@@ -82,7 +91,7 @@ closeModal(modalEmail, true)
 const btnEnviar = document.getElementById('btnEnviar')
 const form = document.getElementById('mensagem')
 const loading = document.querySelector('.loading')
-let response = null
+let response = null;
 
 form.addEventListener('submit',async e=>{
     e.preventDefault();
@@ -95,6 +104,9 @@ form.addEventListener('submit',async e=>{
         response = await enviarMensagem(nome, email, msg)
         loading.classList.remove('active')
         loading.classList.add(response)
+        if(response === 'error'){
+            desativarMensagem()
+        }
     }else{
         form.classList.add('error')
         window.setTimeout(()=>form.classList.remove('error'), 2500)
@@ -110,12 +122,18 @@ form.addEventListener('submit',async e=>{
         const dia = String(data.getDate()).padStart(2, '0');
         const mes = String(data.getMonth() + 1).padStart(2, '0');
         const ano = data.getFullYear();
+        const dataDMA = dia + '/' + mes + '/' + ano;
+        const time = String(data.getHours()+":"+data.getMinutes());
         const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
         const docRef = await addDoc(collection(db, "Mensagens"), {
             Nome: nome,
             Email: email,
             Mensagem: msg,
-            DataDeEnvio: dataAtual
+            DataDeEnvio: dataAtual,
+            Data: dataDMA,
+            Hora: time,
+            Star: false,
+            New: true,
         });
         console.log("Mensagem enviada com ID: ", docRef.id);
         return 'done'

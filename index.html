@@ -77,7 +77,7 @@
                                 <p>entre em contato</p>
                                 <div class="atendimento-contato">
                                     <label for="email-open-close">Mensagem</label>
-                                    <a href="#">Whatsapp</a>
+                                    <a target="_blank" href="https://wa.me/5513981863007">Whatsapp</a>
                                 </div>
                             </section>
                             <section class="consulta">
@@ -105,7 +105,7 @@
                                 <p>entre em contato</p>
                                 <div class="atendimento-contato">
                                     <label for="email-open-close">Mensagem</label>
-                                    <a href="#">Whatsapp</a>
+                                    <a target="_blank" href="https://wa.me/5513981863007">Whatsapp</a>
                                 </div>
                             </section>
 
@@ -137,17 +137,17 @@
         </ul>
         <ul class="social-media-container">
             <li class="icon-container">
-                <a href="https://www.youtube.com/channel/UC0PrKBzMUemgMN-ZscPNmIA/featured">
+                <a target="_blank" href="https://www.youtube.com/channel/UC0PrKBzMUemgMN-ZscPNmIA/featured">
                     <img src="img/youtube-circle.svg" alt="" class="social-media-icon">
                 </a>
             </li>
             <li class="icon-container">
-                <a href="https://www.tiktok.com/@ludicaobea">
+                <a target="_blank" href="https://www.tiktok.com/@ludicaobea">
                     <img src="img/tiktok-circle.svg" alt="" class="social-media-icon">   
                 </a>
             </li>
             <li class="icon-container">
-                <a href="https://www.instagram.com/ludicaobemestar/">
+                <a target="_blank" href="https://www.instagram.com/ludicaobemestar/">
                     <img src="img/instagram-circle.svg" alt="" class="social-media-icon">   
                 </a>
             </li>
@@ -168,7 +168,15 @@
                         <label for="email-open-close" class="close-modal-btn">
                             <img src="img/close.svg" alt="">               
                         </label>
-                        
+                        <input type="radio" 
+                        name="contato-tab" id="check-mensagem" class="check-modal" value="mensagem" checked/>
+                        <input type="radio" 
+                        name="contato-tab" id="check-email" class="check-modal" 
+                        value="email"/>
+                        <div class="contato-tabs">
+                            <label for="check-mensagem" class="mensagem-btn">MENSAGEM</label>
+                            <label for="check-email" class="email-btn">E-MAIL</label>               
+                        </div>
                         <div class="loading">
                             <p>Enviando mensagem...</p>
                         </div>
@@ -206,7 +214,7 @@
             </li>
         </ul>
         <footer>
-            <a href="https://www.instagram.com/ludicaobemestar/">@ludicaobemestar</a>
+            <a target="_blank" href="https://www.instagram.com/ludicaobemestar/">@ludicaobemestar</a>
         </footer>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script> 

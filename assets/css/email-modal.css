@@ -100,7 +100,8 @@
 
 /* CASO FIREBASE ESTEJA FORA DOR AR */
 .email-container.inativo #mensagem,
-.email-container.inativo .email-copy .msg-erro{
+.email-container.inativo .contato-tabs .mensagem-btn
+{
     display: none;
 }
 
@@ -110,12 +111,15 @@
 
 /* CASO FIREBASE ESTEJA FORA DOR AR */
 
-
 /* Enviar Mensagem */
 
 .email-container .email-text{
     padding-left: 4px;
     color:var(--cor-text);
+}
+
+.email-container .email-copy .msg-erro{
+    display: none;
 }
 
 /* Loading */
@@ -171,6 +175,10 @@
 .loading.error + #mensagem
 {
     display:none;
+}
+
+.loading.error ~ .email-copy .msg-erro{
+    display: block;
 }
 /* Fim do Loading */
 
@@ -253,4 +261,70 @@ textarea:focus {
     /* background-color: #efd9ff; */
 }
 
+#mensagem,
+.email-copy{
+    display: none;
+    opacity: 0;
+    font-size: 1rem;
+}
 
+#check-mensagem:checked ~ #mensagem,
+#check-email:checked ~ .email-copy{
+    animation: showContent .3s forwards;
+    display: grid;
+}
+
+#check-mensagem:checked ~ .contato-tabs .mensagem-btn,
+#check-email:checked ~ .contato-tabs .email-btn{
+    color: rgba(25, 1, 44);
+    background: #EBDBF7;
+    border: 1px solid rgb(176, 117, 224);
+}
+
+#check-mensagem:checked ~ .contato-tabs .mensagem-btn::before,
+#check-email:checked ~ .contato-tabs .email-btn::before{
+    background: #9C77B8;
+    outline: .5px solid #9C77B8;
+    transition: .3s;
+}
+
+.contato-tabs{
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    padding: 0 4px;
+    margin-bottom: 12px;
+}
+
+.contato-tabs label{
+    padding: 6px 8px;
+    display: flex;
+    text-align: center;
+    font-family: var(--f-text);
+    font-size: .825rem;
+    position: relative;
+    color: rgba(25, 1, 44, 0.51);
+    border: 1px solid #D6C0E7;
+    border-radius: 5px;
+    align-items: center;
+    gap:4px;
+    cursor: pointer;
+}
+
+.contato-tabs label::before{
+    content: '';
+    width: 4px;
+    height: 4px;
+    border: 1px solid #66368b77;
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+}
+
+.contato-tabs label:hover{
+    color: rgba(25, 1, 44);
+}
+
+.disable{
+    display: none !important;
+}
