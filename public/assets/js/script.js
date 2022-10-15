@@ -134,6 +134,8 @@ form.addEventListener('submit',async e=>{
             Hora: time,
             Star: false,
             New: true,
+            Trash: false,
+            Archive: false
         });
         console.log("Mensagem enviada com ID: ", docRef.id);
         return 'done'

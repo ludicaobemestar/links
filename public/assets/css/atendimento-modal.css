@@ -418,10 +418,12 @@ p.retorno{
     color: rgba(25, 1, 44);
     padding: 12px 20px;
     gap: 4px;
-    border: 2px solid var(--cor-borderlogo);
+    border: 1px solid var(--cor-borderlogo);
+    border: 2px solid #d7bceb;
+
     border-radius: 5px;
     text-transform: uppercase;
-    background-color: #faf3ff;
+    background: linear-gradient(180deg, #edd6ff,#e3cef5);
 }
 
 .atendimento-contato label::before{
