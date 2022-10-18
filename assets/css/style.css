@@ -1,0 +1,56 @@
+@import 'main.css';
+@import 'email-modal.css';
+@import 'atendimento-modal.css';
+
+:root{
+    /* FONTS */
+    --f-ludicao: 'Amatic SC', cursive;
+    --f-ludicao-text: 'Atma', cursive;
+    --f-text: 'Poppins', sans-serif;
+
+    /* CORES */
+    --cor-title: #200436;
+    --cor-text: #19012C;
+    --cor-bglogo: #d6c0e750;
+    --cor-borderlogo: #B496CB;
+    --cor-bgButton: #F3E7FD;
+    --cor-borderButton: #66368B;
+    --cor-bgModal: #808080;
+}
+
+*,
+h1,
+h2,
+h5,
+ul,
+li,
+p{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: var(--cor-text);
+}
+
+img{
+    display: block;
+}
+
+body{
+    background-image: url('../../img/fundo.webp');
+    background-repeat: repeat;
+    width: 100%;
+    font-family: var(--f-text);
+}
+
+
+
+
+

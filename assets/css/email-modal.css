@@ -1,0 +1,341 @@
+/* EMAIL MODAL */
+#email-btn + #email-open-close:checked + .email-modal{
+    display: flex;
+    opacity: 1;
+}
+
+.icon-container .email-modal{
+    padding: 12px 0px 8px 0px;
+    text-align: center;
+}
+
+.icon-container .email-container{
+    padding-bottom: 12px;
+}
+
+.email-copy{
+    display: none;
+    grid-template-rows: repeat(3, 1fr, 3);
+    gap:12px;
+    padding: 0px 12px;
+}
+
+.email-endereco{
+    padding: 0 16px;
+}
+
+.copiar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 12px;
+    gap: 4px;
+    width: 80%;
+    cursor: pointer;
+    transition: .2s;
+    border: 2px solid #d7bceb;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #edd6ff,#e3cef5);
+}
+
+.copiar:active{
+    scale: 1.05;
+    transition: .2s;
+}
+
+.copiar.copied{
+    pointer-events: none;
+    opacity: .3;
+}
+
+.copiar button{
+    border: none;
+    height: 2rem;
+    background-color: transparent;
+    font-size: .7rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.copiar button::before{
+    content:'COPIAR';
+}
+
+.copiar.copied button::before{
+    content:'COPIADO';
+}
+
+.email-modal .toast-copied{
+    background: var(--cor-bgButton);
+    border: 2px solid var(--cor-borderButton);
+    border-radius: 5px;
+    display: none;
+    position: fixed;
+    bottom: 12px;
+    font-family: 'Poppins';
+    font-size: .75rem;
+    color: var(--cor-text);
+    padding: 12px;
+}
+
+.toast-copied.active{
+    display: block;
+    animation: upToast .3s forwards,
+            downToast .3s forwards 1.3s;
+
+}
+
+@keyframes upToast{
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes downToast{
+    to{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+/* CASO FIREBASE ESTEJA FORA DOR AR */
+.email-container.inativo #mensagem,
+.email-container.inativo .contato-tabs .mensagem-btn
+{
+    display: none;
+}
+
+.email-container.inativo .email-copy{
+    display: grid;
+}
+
+/* CASO FIREBASE ESTEJA FORA DOR AR */
+
+/* Enviar Mensagem */
+
+.email-container .email-text{
+    padding-left: 4px;
+    color:var(--cor-text);
+}
+
+.email-container .email-copy .msg-erro{
+    display: none;
+}
+
+/* Loading */
+.loading p{
+    display: none;
+}
+
+.loading.active p{
+    display: block;
+}
+
+.loading.active::before{
+    content:'';
+    display: block;
+    margin: 12px 80px;
+    border: 10px solid #a569d371;
+    border-bottom: 10px solid transparent;
+    border-radius: 50%;
+    justify-self: center;
+    width: 20px;
+    height: 20px;
+    animation: loadings 1s infinite linear;
+}
+
+.loading.done{
+    text-align: center;
+    padding: 4px 12px;
+}
+.loading.done::before{
+    content:'Mensagem enviada com sucesso!';
+    display: block;
+    padding: 4px;
+}
+
+.loading.done::after{
+    content:'Responderemos em até 48h, obrigado!';
+    display: block;
+}
+
+.loading.done::after{
+    content:'Responderemos em até 48h, obrigado!';
+    display: block;
+}
+
+@keyframes loadings {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+#check-mensagem:checked ~ .loading.active + #mensagem,
+#check-mensagem:checked ~ .loading.done + #mensagem,
+#check-mensagem:checked ~ .loading.error + #mensagem
+{
+    display: none;
+}
+
+#check-email:checked ~ .loading.done{
+    display: none;
+}
+
+.loading.error ~ .email-copy .msg-erro{
+    display: block;
+}
+/* Fim do Loading */
+
+#mensagem{
+    grid-template-rows: auto 1fr 1fr auto 1fr;
+    gap: 12px;
+    padding: 0 24px;
+}
+
+#mensagem label{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    text-align: left;
+
+}
+#mensagem span{
+    margin-left: 4px;
+    margin-bottom: 4px;
+    font-size: .625rem;
+}
+
+#mensagem input,
+textarea{
+    border-radius: 8px;
+    line-height: 2.3;
+    border: 2px solid var(--cor-borderlogo);
+    padding-left: 8px;
+    font-family: 'Roboto';
+    color: var(--cor-text);
+    background-color: #faf3ff;
+}
+
+.loading.error + #mensagem + .email-copy{
+    display: grid;
+}
+
+#mensagem .error{
+    color: rgb(232, 65, 65);
+    display: none;
+    opacity: 0;
+    transition: .5s;
+}
+
+#mensagem.error .error{
+    display: block;
+    animation: error 1s forwards;
+}
+
+@keyframes error {
+    to{
+        opacity: 1;
+    }
+}
+
+textarea{
+    line-height: 1.1;
+    padding-top: 4px;
+    height: 8rem;
+    resize: none;
+}
+
+#mensagem input:focus,
+textarea:focus {
+    border: 2px solid rgb(163, 132, 209);
+    outline: 1px solid #ad62ea;
+    background-color: #ffffff;
+}
+
+#btnEnviar{
+    justify-self: center;
+    display: inline-block;
+    margin-top: 4px;
+    width: 60%;
+    font-family: var(--f-text);
+    color: #431567;
+    cursor: pointer;
+    border: 2px solid #d7bceb;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #edd6ff,#e3cef5);
+}
+
+#mensagem,
+.email-copy{
+    display: none;
+    opacity: 0;
+    font-size: 1rem;
+}
+
+#check-mensagem:checked ~ #mensagem,
+#check-email:checked ~ .email-copy{
+    animation: showContent .3s forwards;
+    display: grid;
+}
+
+#check-mensagem:checked ~ .contato-tabs .mensagem-btn,
+#check-email:checked ~ .contato-tabs .email-btn{
+    color: rgba(25, 1, 44);
+    background: #EBDBF7;
+    border: 1px solid rgb(176, 117, 224);
+}
+
+#check-mensagem:checked ~ .contato-tabs .mensagem-btn::before,
+#check-email:checked ~ .contato-tabs .email-btn::before{
+    background: #9C77B8;
+    outline: .5px solid #9C77B8;
+    transition: .3s;
+}
+
+.contato-tabs{
+    display: flex;
+    justify-content: center;
+    gap:8px;
+    padding: 0 4px;
+    margin-bottom: 12px;
+}
+
+.contato-tabs label{
+    padding: 6px 8px;
+    display: flex;
+    text-align: center;
+    font-family: var(--f-text);
+    font-size: .825rem;
+    position: relative;
+    color: rgba(25, 1, 44, 0.51);
+    border: 1px solid #D6C0E7;
+    border-radius: 5px;
+    align-items: center;
+    gap:4px;
+    cursor: pointer;
+}
+
+.contato-tabs label::before{
+    content: '';
+    width: 4px;
+    height: 4px;
+    border: 1px solid #66368b77;
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+}
+
+.contato-tabs label:hover{
+    color: rgba(25, 1, 44);
+}
+
+.disable{
+    display: none !important;
+}

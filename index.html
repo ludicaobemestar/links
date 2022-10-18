@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludicão | Educação e Bem-Estar Canino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Atma&family=Poppins&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="logo-container">
+                <img src="img/nos.png" height="140" width="140" alt="Leandro e Thamires em cartoon" />
+            </div>
+            <div class="title-container">
+                <h1>Ludicão</h1>
+                <h2>Educação e Bem-Estar Canino</h2>
+            </div>
+        </div>
+        <ul class="links-container">
+            <li class="btn">
+                <div class="btn-icon">
+                    <img src="img/dogfone.webp"  width="62" height="62" alt="" />
+                </div>
+                <label for="atendimento-open-close" id="atendimento-btn">Atendimento
+                </label> 
+                <input type="checkbox" id="atendimento-open-close" 
+                    class="check-modal"
+                    name="atendimento" />
+                <!-- ATENDIMENTO MODAL -->
+                <dialog class="atendimento-modal">
+                    <div class="atendimento-container">
+                        <div class="btn-icon btn-icon-modal">
+                            <img src="img/dogfone.webp"  width="62" height="62" alt="" />
+                        </div>
+                        <label for="atendimento-open-close" class="close-modal-btn">
+                            <img src="img/close.svg" alt="">               
+                        </label>
+                        <input type="checkbox" id="presencial-open-close" class="check-modal" />
+                        <label for="presencial-open-close" class="check-modal-btn">ATENDIMENTO PRESENCIAL</label>
+                        <div class="atendimento-presencial-container">
+                            <input type="radio" 
+                            name="tab" id="check-adestramento" class="check-modal" value="adestramento" checked/>
+                            <input type="radio" 
+                            name="tab" id="check-consulta" class="check-modal" 
+                            value="consulta"/>
+                            <div class="tabs">
+                                <label for="check-adestramento" class="adestra-btn">Adestramento</label>
+                                <label for="check-consulta" class="consulta-btn">Consulta Comportamental</label>               
+                            </div>
+                            <section class="adestramento">
+                                <ul>
+                                    <li>Atendimento em domicílio</li>
+                                    <li>Aula de 45 minutos</li>
+                                    <li>1x ou 2x por semana</li>
+                                    <li>Acompanhamento dos tutores</li>
+                                </ul>
+                                <label for="regioes" class="adestra-title">REGIÕES ATENDIDAS <span class="arrow-down"></span></label>
+                                <input type="checkbox" id="regioes" class="check-modal"/>
+                                <p>Itanhaém, Peruíbe e Mongaguá</p>
+                                <label for="investimento" class="adestra-title">INVESTIMENTO <span class="arrow-down"></span></label>
+                                <input type="checkbox" id="investimento" class="check-modal"/>
+                                <div class="adestra-invest">
+                                    <span>Primeira Visita</span>
+                                    <span>R$40,00</span>
+                                    <span>Pacote c/ 4 aulas</span>
+                                    <span>R$300,00</span>
+                                    <p>Valor independente do nº de cães</p>
+                                </div>
+                                <div class="adestra-agende">
+                                    <p>Agende a primeira visita sem compromisso. Essa visita nos ajuda a entender melhor o caso, tirar dúvidas e explicar o treinamento.</p>
+                                </div>
+                                <p>entre em contato</p>
+                                <div class="atendimento-contato">
+                                    <label for="email-open-close">Mensagem</label>
+                                    <a target="_blank" href="https://wa.me/5513981863007">Whatsapp</a>
+                                </div>
+                            </section>
+                            <section class="consulta">
+                                <ul>
+                                    <li>Atendimento em domicílio</li>
+                                    <li>Consulta de 1h30</li>
+                                    <li>Encontro único*</li>
+                                    <li>Contato no Whatsapp por 30 dias</li>
+                                </ul>
+                                <label for="regioes-consulta" class="adestra-title">REGIÕES ATENDIDAS <span class="arrow-down"></span></label>
+                                <input type="checkbox" id="regioes-consulta" class="check-modal"/>
+                                <p>Itanhaém, Peruíbe, Mongaguá, Praia Grande, São Vicente e Santos</p>
+                                <label for="investimento-consulta" class="adestra-title">INVESTIMENTO <span class="arrow-down"></span></label>
+                                <input type="checkbox" id="investimento-consulta" class="check-modal"/>
+                                <div class="adestra-invest">
+                                    <span>Consulta Comportamental  </span>
+                                    <span>R$180,00</span>
+                                    <span>Retorno Presencial</span>
+                                    <span>R$60,00</span>
+                                    <span>Retorno Online</span>
+                                    <span>grátis</span>
+                                    <p>Valor independente do nº de cães</p>
+                                </div>
+                                <p class="retorno">*Retorno apenas se agendado em até 30 dias após a realização da consulta. </p> 
+                                <p>entre em contato</p>
+                                <div class="atendimento-contato">
+                                    <label for="email-open-close">Mensagem</label>
+                                    <a target="_blank" href="https://wa.me/5513981863007">Whatsapp</a>
+                                </div>
+                            </section>
+
+                        </div>
+                        <a target="_blank" href="https://www.canva.com/design/DAE88R0JZF8/khAlbukBGYOCNN5dREaI8Q/view?website#4">ATENDIMENTO ONLINE</a>
+                    </div>
+                    
+                </dialog>
+                <!-- ATENDIMENTO MODAL -->
+            </li>
+            <li class="btn">
+                <div class="btn-icon">
+                    <img src="img/midia.webp"  width="62" height="62" alt="" />
+                </div>
+                <a target="_blank" href="https://www.canva.com/design/DAE-6dQumao/cS24A6Woy3b9z-Od46-S5g/view?utm_content=DAE-6dQumao&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">Mídia - Vídeos e entrevistas</a>
+            </li>
+            <li class="btn">
+                <div class="btn-icon">
+                    <img src="img/artigos.webp"  width="62" height="62" alt="" />
+                </div>
+                <a target="_blank" href="https://buono.pet/author/thapacheco/">Artigos / Blog</a>
+            </li>
+            <li class="btn">
+                <div class="btn-icon">
+                    <img src="img/ict.webp"  width="62" height="62" alt="" />
+                </div>
+                <a target="_blank" href="https://caoterapeuta.org.br/lojinha/">Instituto Cão Terapeuta</a>
+            </li>
+        </ul>
+        <ul class="social-media-container">
+            <li class="icon-container">
+                <a target="_blank" href="https://www.youtube.com/channel/UC0PrKBzMUemgMN-ZscPNmIA/featured">
+                    <img src="img/youtube-circle.svg" alt="" class="social-media-icon">
+                </a>
+            </li>
+            <li class="icon-container">
+                <a target="_blank" href="https://www.tiktok.com/@ludicaobea">
+                    <img src="img/tiktok-circle.svg" alt="" class="social-media-icon">   
+                </a>
+            </li>
+            <li class="icon-container">
+                <a target="_blank" href="https://www.instagram.com/ludicaobemestar/">
+                    <img src="img/instagram-circle.svg" alt="" class="social-media-icon">   
+                </a>
+            </li>
+            
+            <li class="icon-container">
+                <label for="email-open-close" id="email-btn">
+                    <img src="img/mail-circle.svg" alt="email" title="email" class="social-media-icon">
+                </label> 
+                <input type="checkbox" id="email-open-close" 
+                    class="check-modal"
+                    name="email" />
+                <!-- EMAIL MODAL -->
+                <div class="email-modal">
+                    <div class="email-container">
+                        <div class="btn-icon btn-icon-modal">
+                            <img src="img/dogfone.webp"  width="62" height="62" alt="" />
+                        </div>
+                        <label for="email-open-close" class="close-modal-btn">
+                            <img src="img/close.svg" alt="">               
+                        </label>
+                        <input type="radio" 
+                        name="contato-tab" id="check-mensagem" class="check-modal" value="mensagem" checked/>
+                        <input type="radio" 
+                        name="contato-tab" id="check-email" class="check-modal" 
+                        value="email"/>
+                        <div class="contato-tabs">
+                            <label for="check-mensagem" class="mensagem-btn">MENSAGEM</label>
+                            <label for="check-email" class="email-btn">E-MAIL</label>               
+                        </div>
+                        <div class="loading">
+                            <p>Enviando mensagem...</p>
+                        </div>
+                        <form id="mensagem" method="post">
+                            <p class="email-text">Envie sua mensagem, responderemos em até 48h.</p>
+                            <label for="nome">
+                                <span>Nome</span>
+                                <input type="text" name="nome" id="nome" required/>
+                            </label>
+                            <label for="email">
+                                <span>Email</span>
+                                <input type="email" name="email" id="email" required/>
+                            </label>
+                            <label for="msg">
+                                <span>Mensagem</span>
+                                <textarea id="msg" name="msg"></textarea required>
+                            </label>
+                            <button id="btnEnviar">ENVIAR</button>
+                            <span class="error">Preencha corretamente...</span>
+                        </form>
+                        <div class="email-copy">
+                            <p class="msg-erro">Desculpe o transtorno... <br>Ocorreu um erro no envio da mensagem. Por favor, envie para esse e-mail:</p>
+                            <p class="email-endereco">ludicaobemestar@gmail.com</p>
+                            <div class="copiar">
+                                <span><img src="img/copy.svg" alt="" srcset=""></span>
+                                <button></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toast-copied">
+                        <p>✅ Email copiado para área de transferência</p>
+                    </div>
+                </div>
+                <!-- EMAIL MODAL -->
+            </li>
+        </ul>
+        <footer>
+            <a target="_blank" href="https://www.instagram.com/ludicaobemestar/">@ludicaobemestar</a>
+        </footer>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script> 
+    <script src="./assets/js/script.js" type="module"></script>
+    
+</body>
+</html>
