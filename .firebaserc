@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "ludicao-a04b3"
-  }
+  },
+  "targets": {
+    "ludicao-a04b3": {
+      "hosting": {
+        "links": [
+          "ludicao-links"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
