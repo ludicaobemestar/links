@@ -1,6 +1,6 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+    import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
   const app = initializeApp({
     apiKey: "AIzaSyAh4DRYF1xVmjWMpBts1YWZ_xgcPgjnVgo",
@@ -14,7 +14,7 @@
   });
   const db = getFirestore(app);
 
-  export { db, collection, addDoc }
+  export { db, collection, addDoc, Timestamp }
 
   // const querySnapshot = await getDocs(collection(db, "Clientes"));
   // querySnapshot.forEach((doc) => {

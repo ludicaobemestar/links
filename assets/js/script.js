@@ -101,7 +101,8 @@ form.addEventListener('submit',async e=>{
 
     if(nome && email && msg.trim().replaceAll(' ','').length !== 0){
         loading.classList.add('active')
-        response = await enviarMensagem(nome, email, msg)
+        console.log(email.toLowerCase())
+        response = await enviarMensagem(nome, email.toLowerCase(), msg)
         loading.classList.remove('active')
         loading.classList.add(response)
         if(response === 'error'){
@@ -135,7 +136,8 @@ form.addEventListener('submit',async e=>{
             Star: false,
             New: true,
             Trash: false,
-            Archive: false
+            Archive: false,
+            Timestamp: module.Timestamp.now()
         });
         console.log("Mensagem enviada com ID: ", docRef.id);
         return 'done'
