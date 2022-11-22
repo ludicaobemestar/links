@@ -1,0 +1,209 @@
+.black-friday, 
+.black-friday-header{
+  --cor-primaria: #913DD2;
+  --cor-primaria-2: #9C77B8;
+
+  --cinza-7: #222;
+  --cinza-6: #313131;
+  --cinza-5: #3D3D3D;
+  --cinza-4: #525252;
+  --cinza-3: #A9A9A9;
+  --cinza-2: #E8E8E8;
+  --cinza-1: #F3F0F5;
+}
+
+.black-friday-header{
+  display: none;
+  max-width: 428px;
+  margin: auto;
+  padding: 8px;
+  border: 2px solid var(--cor-borderButton);
+  background-color: var(--cinza-7);
+  text-align: center;
+  font-family: var(--f-text);
+}
+
+.black-friday-header .title{
+  font-size: .9rem;
+  color: var(--cor-primaria);
+  font-weight: 400;
+}
+
+.black-friday-header .title .preco{
+  color: #BD2626;
+}
+
+.timer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 8px auto;
+  width: 80%;
+}
+
+.timer div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-primaria-2);
+  background-color: var(--cinza-6);
+  border-radius: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.timer div .time{
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.timer div .time-desc{
+  font-size: .7rem;
+  line-height: 1;
+}
+
+.btn-reservar {
+  padding: 4px 20px;
+  background: linear-gradient(180deg, #481E68 0%, #5E2B84 100%);
+  border-radius: 5px;
+  color: var(--cinza-2);
+  font-family: var(--f-text);
+  font-size: .9rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* MODAL */
+
+.black-friday{
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem .5rem;
+    opacity: 1;
+    }
+
+.black-friday-container{
+    transform: scale(.8);
+    animation: scaleUp .3s .1s forwards;
+
+    border: 2px solid var(--cor-borderButton);
+    background-color: var(--cinza-7);
+    text-align: center;
+    padding: 20px;
+    padding-top: 40px;
+
+    margin: auto;
+    font-family: var(--f-text);
+    position: relative;
+
+}
+
+.black-friday .black-friday-container .title{
+  font-size: 1.7rem;
+  color: var(--cinza-1);
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+.black-friday .black-friday-container .subtitle{
+  font-size: 1.5rem;
+  color: var(--cor-primaria);
+  font-weight: 400;
+}
+
+.black-friday .black-friday-container .promocao{
+  font-size: 1.2rem;
+  color: var(--cinza-3);
+}
+
+.black-friday .black-friday-container .preco-antigo{
+    color: #BD2626;
+    text-decoration: line-through;
+  }
+
+.black-friday .black-friday-container .preco-destaque{
+    color: var(--cinza-1);
+    font-weight: 500
+  }
+
+.black-friday .close-black-friday{
+  font-family: var(--text);
+  color: var(--cinza-1);
+  position: absolute;
+  padding: 12px 20px;
+  cursor: pointer;
+  top:0;
+  right: 0;
+}
+
+.timer-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+.timer-wrapper::before{
+  content:'';
+  width: 40px;
+  height: 2px;
+  background-color: var(--cinza-4);
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.timer-wrapper .timer-title{
+    font-size: 1.2rem;
+    color: var(--cinza-2);
+    font-weight: 400;
+}
+
+.timer-wrapper .timer{
+  margin-top: 12px;
+  width: 100%;
+}
+
+.timer-wrapper .timer div{
+  padding-top: 12px;
+}
+
+.timer-wrapper .timer div .time{
+  font-size: 2.8rem;
+}
+
+.timer-wrapper .timer div .time-desc{
+  font-size: .7rem;
+}
+
+.text{
+  margin: 12px auto;
+  color: var(--cinza-3);
+}
+
+.black-friday .btn-reservar {
+  padding: 4px 12px;
+  background: linear-gradient(180deg, #481E68 0%, #5E2B84 100%);
+  border-radius: 5px;
+  color: var(--cinza-2);
+  font-family: var(--f-text);
+  font-size: .9rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+  
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+
+  margin-top: 0px;
+}

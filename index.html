@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+    <header class="black-friday-header">
+        <h3 class="title">Consulta Comportamental com <span class="preco">R$ 100</span> de desconto!</h3>
+        <div class="timer">
+            <div class="horas">
+                <span class="time" data-hours>00</span>
+                <p class="time-desc">horas</p>
+            </div>
+            <div class="minutos">
+                <span class="time" data-minutes>00</span>
+                <p class="time-desc">min</p>
+            </div>
+            <div class="horas">
+                <span class="time" data-seconds>00</span>
+                <p class="time-desc">seg</p>
+            </div>
+        </div>
+        <button class="btn-reservar" data-btn-link="https://ludicaoblackfriday.web.app/#comprar">Reservar Consulta Comportamental Agora</button>
+    </header>
     <main>
         <div class="container">
             <div class="logo-container">
@@ -217,6 +235,40 @@
             <a target="_blank" href="https://www.instagram.com/ludicaobemestar/">@ludicaobemestar</a>
         </footer>
     </main>
+    <dialog class="black-friday">
+        <div class="black-friday-container">
+            <div class="btn-icon btn-icon-modal">
+                <img src="img/dogfone.webp"  width="62" height="62" alt="" />
+            </div>
+            <div class="close-black-friday">X</div>
+            <h1 class="title">Black Friday</h1>
+            <h2 class="subtitle">Consulta Comportamental</h2>
+            <p class="promocao">de <span class="preco-antigo">R$ 240</span> por até 5x <span class="preco-destaque">R$ 31</span><br />
+            à vista por <span class="preco-destaque">R$ 140</span>
+            </p>
+
+            <div class="timer-wrapper">
+                <h2 class="timer-title">PROMOÇÃO ACABA EM <span data-days>0</span> DIAS E</h2>
+                <div class="timer">
+                    <div class="horas">
+                        <span class="time" data-hours>00</span>
+                        <p class="time-desc">HORA(S)</p>
+                    </div>
+                    <div class="minutos">
+                        <span class="time" data-minutes>00</span>
+                        <p class="time-desc">MINUTO(S)</p>
+                    </div>
+                    <div class="horas">
+                        <span class="time" data-seconds>00</span>
+                        <p class="time-desc">SEGUNDO(S)</p>
+                    </div>
+                </div>
+                <p class="text">Unidades Limitadas</p>
+            </div>
+            <button class="btn-reservar" data-btn-link="https://ludicaoblackfriday.web.app/#comprar">Reservar Consulta Comportamental Agora</button>
+        </div>  
+    </dialog>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script> 
     <script src="./assets/js/script.js" type="module"></script>
     
