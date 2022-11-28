@@ -118,21 +118,21 @@ form.addEventListener('submit',async e=>{
  async function enviarMensagem(nome, email, msg){
      try {
         const {addDoc, collection, db} = module //await import('./firebase.js')
-        const data = new Date();
-        const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
-        const dia = String(data.getDate()).padStart(2, '0');
-        const mes = String(data.getMonth() + 1).padStart(2, '0');
-        const ano = data.getFullYear();
-        const dataDMA = dia + '/' + mes + '/' + ano;
-        const time = String(data.getHours()+":"+data.getMinutes());
-        const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
+        // const data = new Date();
+        // const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
+        // const dia = String(data.getDate()).padStart(2, '0');
+        // const mes = String(data.getMonth() + 1).padStart(2, '0');
+        // const ano = data.getFullYear();
+        // const dataDMA = dia + '/' + mes + '/' + ano;
+        // const time = String(data.getHours()+":"+data.getMinutes());
+        // const dataAtual = dia + '/' + mes + '/' + ano + ' ' + hora;
         const docRef = await addDoc(collection(db, "Mensagens"), {
             Nome: nome,
             Email: email,
             Mensagem: msg,
-            DataDeEnvio: dataAtual,
-            Data: dataDMA,
-            Hora: time,
+            // DataDeEnvio: dataAtual,
+            // Data: dataDMA,
+            // Hora: time,
             Star: false,
             New: true,
             Trash: false,
