@@ -1,11 +1,11 @@
-main{
+main {
     max-width: 428px;
     margin: auto;
     padding: 0 8px;
     /* outline: 2px solid lime; */
 }
 
-main .container{
+main .container {
     background-color: var(--cor-bglogo);
     border: 2px solid var(--cor-borderlogo);
     width: 220px;
@@ -14,19 +14,26 @@ main .container{
 
 }
 
-main .logo-container{
+main .logo-container {
     margin-top: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-main .title-container{
+main .logo-container img {
+    border: 2px solid var(--cor-borderButton);
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+main .title-container {
     margin: 0 auto 12px auto;
     text-align: center;
 }
 
-main .title-container h1{
+main .title-container h1 {
     font-family: var(--f-ludicao);
     font-weight: 700;
     font-size: 3rem;
@@ -35,7 +42,7 @@ main .title-container h1{
     color: var(--cor-title);
 }
 
-main .title-container h2{
+main .title-container h2 {
     margin-top: 8px;
     font-family: var(--f-ludicao-text);
     font-size: 1rem;
@@ -44,22 +51,22 @@ main .title-container h2{
     color: var(--cor-title);
 }
 
-.links-container{
+.links-container {
     margin-top: 28px;
 }
 
-.links-container .btn + .btn {
+.links-container .btn+.btn {
     margin-top: 28px;
 }
 
-.btn{
+.btn {
     display: flex;
     align-items: center;
     position: relative;
     margin-left: 8px;
 }
 
-.btn .btn-icon{
+.btn .btn-icon {
     width: 62px;
     height: 62px;
     border: 2px solid #66368B;
@@ -68,18 +75,18 @@ main .title-container h2{
     left: -10px;
 }
 
-.btn .btn-icon img{
+.btn .btn-icon img {
     display: block;
     position: relative;
-    top:-3px;
+    top: -3px;
     left: -2px;
     width: 65px;
     height: 65px;
 }
 
-.btn > a,
+.btn>a,
 .btn #atendimento-btn,
-.atendimento-container > a{
+.atendimento-container>a {
     width: 100%;
     height: 42px;
     display: flex;
@@ -96,18 +103,18 @@ main .title-container h2{
     cursor: pointer;
 }
 
-.btn > a:active,
-.btn > a:focus,
-.btn > a:hover,
+.btn>a:active,
+.btn>a:focus,
+.btn>a:hover,
 .btn #atendimento-btn:active,
 .btn #atendimento-btn:focus,
-.btn #atendimento-btn:hover{
+.btn #atendimento-btn:hover {
     outline: 1px solid rgb(161, 114, 184);
     background-color: #F3E7FD;
     transition: .2s;
 }
 
-.social-media-container{
+.social-media-container {
     margin: 80px auto 8px auto;
     display: flex;
     justify-content: center;
@@ -120,19 +127,18 @@ main .title-container h2{
     align-items: center;
 }
 
-.social-media-container .social-media-icon{
+.social-media-container .social-media-icon {
     filter: drop-shadow(1px 1px 1px rgba(82, 27, 110, 0.505)) opacity(1);
-    
+
     transition: .3s;
 }
 
-.social-media-container .social-media-icon:hover
-{
+.social-media-container .social-media-icon:hover {
     scale: 1.1;
     filter: drop-shadow(2px 2px 1px rgba(82, 27, 110, 0.505));
     transition: .3s;
 }
 
-footer{
+footer {
     text-align: center;
 }
