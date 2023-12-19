@@ -1,13 +1,36 @@
+/* FERIAS MODAL */
+#ferias-open-close:checked+.ferias-modal {
+    display: flex;
+    opacity: 1;
+}
+
+.ferias-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 32px 16px;
+    text-align: center;
+}
+
+.ferias-content p {
+    font-size: 16px;
+}
+
+/* FIM FERIAS MODAL */
+
 /* ATENDIMENTO MODAL */
 
-.btn label + #atendimento-open-close:checked + .atendimento-modal{
+.btn label+#atendimento-open-close:checked+.atendimento-modal {
     display: flex;
     opacity: 1;
 }
 
 .atendimento-modal,
-.email-modal{
-    position:fixed;
+.email-modal,
+.ferias-modal {
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0px;
@@ -22,7 +45,8 @@
 }
 
 .atendimento-container,
-.email-container{
+.email-container,
+.ferias-container {
     margin: auto;
     display: grid;
     grid-template-rows: 32px auto auto;
@@ -41,21 +65,25 @@
     animation: scaleUp .3s .2s forwards;
 }
 
+.ferias-container {
+    margin-top: 80px;
+}
+
 @keyframes scaleUp {
-    to{
+    to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-.btn-icon.btn-icon-modal{
+.btn-icon.btn-icon-modal {
     position: absolute;
     left: calc(50% - 58px/2);
     top: calc(-58px/2);
 }
 
-.btn-icon.btn-icon-modal::after{
-    content:'';
+.btn-icon.btn-icon-modal::after {
+    content: '';
     width: 180px;
     height: 2px;
     background-color: #efd9ff;
@@ -64,34 +92,34 @@
     margin-top: 4px;
 }
 
-.atendimento-modal .atendimento-container > a,
-.check-modal-btn
-{
+.atendimento-modal .atendimento-container>a,
+.check-modal-btn {
     border: none;
     padding: 0 20px;
 }
 
-.check-modal-btn{
+.check-modal-btn {
     display: block;
     padding: 12px 20px;
     margin-top: 8px;
     cursor: pointer;
 }
 
-:is(.atendimento-container, .email-container) .close-modal-btn{
+:is(.atendimento-container, .email-container, .ferias-container) .close-modal-btn {
     justify-self: end;
     width: fit-content;
     padding-right: 12px;
     cursor: pointer;
 }
 
-:is(.atendimento-container, .email-container) .close-modal-btn img{
+:is(.atendimento-container, .email-container, .ferias-container) .close-modal-btn img {
     display: inline-block;
     width: 18px;
     cursor: pointer;
 }
 
-.check-modal{ /*checkboxes e radios*/
+.check-modal {
+    /*checkboxes e radios*/
     display: none;
 }
 
@@ -99,17 +127,17 @@
 
 /* ATENDIMENTO PRESENCIAL */
 
-#presencial-open-close:checked ~ .atendimento-presencial-container{
+#presencial-open-close:checked~.atendimento-presencial-container {
     /* display: block;  */
     animation: openModal .1s linear forwards,
-    showContent .2s .2s forwards;
+        showContent .2s .2s forwards;
 }
 
-.check-modal-btn{
+.check-modal-btn {
     text-align: center;
 }
 
-.atendimento-presencial-container{
+.atendimento-presencial-container {
     /* display: none; */
     font-family: 'Roboto';
     font-size: .825rem;
@@ -122,19 +150,21 @@
 }
 
 @keyframes closeModal {
-    from{
+    from {
         max-height: 600px;
-    }to{
+    }
+
+    to {
         max-height: 0px;
     }
 }
 
-#presencial-open-close:checked ~ .atendimento-presencial-container + a{
+#presencial-open-close:checked~.atendimento-presencial-container+a {
     overflow: hidden;
     animation: closeLinkModal .2s forwards;
 }
 
-#presencial-open-close:checked + .check-modal-btn{
+#presencial-open-close:checked+.check-modal-btn {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
@@ -145,16 +175,16 @@
     position: relative;
 }
 
-#presencial-open-close:checked + .check-modal-btn::after{
-    content:'';
+#presencial-open-close:checked+.check-modal-btn::after {
+    content: '';
     grid-column: span 2;
     width: 100%;
     height: 2px;
     background-color: #20043669;
 }
 
-#presencial-open-close:checked + .check-modal-btn::before{
-    content:'';
+#presencial-open-close:checked+.check-modal-btn::before {
+    content: '';
     background: url('../../img/lefticon.svg');
     width: 18px;
     height: 18px;
@@ -165,26 +195,30 @@
 }
 
 @keyframes openModal {
-    0%{
+    0% {
         max-height: 0px;
         /* max-width: 0px; */
-    }100%{
+    }
+
+    100% {
         max-height: 600px;
         /* max-width: 428px; */
     }
 }
 
 @keyframes showContent {
-    to{
+    to {
         opacity: 1;
     }
 }
 
 @keyframes closeLinkModal {
-    from{
+    from {
         opacity: 1;
         max-height: 16px;
-    }to{
+    }
+
+    to {
         opacity: 0;
         max-height: 0px;
 
@@ -192,40 +226,40 @@
 }
 
 section.consulta,
-section.adestramento{
+section.adestramento {
     display: none;
     opacity: 0;
     font-size: 1rem;
 }
 
-#check-adestramento:checked ~ section.adestramento,
-#check-consulta:checked ~ section.consulta{
+#check-adestramento:checked~section.adestramento,
+#check-consulta:checked~section.consulta {
     animation: showContent .6s forwards;
     display: block;
 }
 
-#check-adestramento:checked ~ .tabs .adestra-btn,
-#check-consulta:checked ~ .tabs .consulta-btn{
+#check-adestramento:checked~.tabs .adestra-btn,
+#check-consulta:checked~.tabs .consulta-btn {
     color: rgba(25, 1, 44);
     background: #EBDBF7;
     border: 1px solid rgb(176, 117, 224);
 }
 
-#check-adestramento:checked ~ .tabs .adestra-btn::before,
-#check-consulta:checked ~ .tabs .consulta-btn::before{
+#check-adestramento:checked~.tabs .adestra-btn::before,
+#check-consulta:checked~.tabs .consulta-btn::before {
     background: #9C77B8;
     outline: .5px solid #9C77B8;
     transition: .3s;
 }
 
-.tabs{
+.tabs {
     display: flex;
     justify-content: center;
-    gap:8px;
+    gap: 8px;
     padding: 0 4px;
 }
 
-.tabs label{
+.tabs label {
     padding: 6px 8px;
     display: flex;
     text-align: center;
@@ -236,12 +270,12 @@ section.adestramento{
     border: 1px solid #D6C0E7;
     border-radius: 5px;
     align-items: center;
-    gap:4px;
+    gap: 4px;
     text-transform: uppercase;
 
 }
 
-.tabs label::before{
+.tabs label::before {
     content: '';
     width: 4px;
     height: 4px;
@@ -251,27 +285,27 @@ section.adestramento{
     border-radius: 50%;
 }
 
-.tabs label:hover{
+.tabs label:hover {
     color: rgba(25, 1, 44);
 }
 
-.atendimento-presencial-container label{
+.atendimento-presencial-container label {
     cursor: pointer;
 }
 
-.atendimento-presencial-container ul{
+.atendimento-presencial-container ul {
     list-style-position: inside;
     line-height: 1.5;
 }
 
-.atendimento-presencial-container ul li{
+.atendimento-presencial-container ul li {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-.atendimento-presencial-container ul li::before{
-    content:'';
+.atendimento-presencial-container ul li::before {
+    content: '';
     background-color: #c19bdf;
     width: 6px;
     height: 2px;
@@ -280,11 +314,11 @@ section.adestramento{
 
 }
 
-.atendimento-presencial-container section{
+.atendimento-presencial-container section {
     padding: 12px 24px;
 }
 
-.adestra-title{
+.adestra-title {
     display: flex;
     gap: 4px;
     font-family: var(--f-text);
@@ -295,15 +329,15 @@ section.adestramento{
     padding-top: 12px;
 }
 
-.arrow-down{
+.arrow-down {
     background: url('../../img/arrow_drop_down.svg') center center;
     width: 20px;
     height: 20px;
     display: inline-block;
 }
 
-#regioes + p,
-#regioes-consulta + p{
+#regioes+p,
+#regioes-consulta+p {
     margin-top: 8px;
     max-height: 0px;
     opacity: 0;
@@ -311,23 +345,25 @@ section.adestramento{
     display: none;
 }
 
-#regioes:checked + p,
-#regioes-consulta:checked + p{
+#regioes:checked+p,
+#regioes-consulta:checked+p {
     display: block;
     animation: mostrarP .2s forwards,
-    showContent .2s .1s forwards;
+        showContent .2s .1s forwards;
 }
 
-@keyframes mostrarP{
-    from{
+@keyframes mostrarP {
+    from {
         max-height: 0px;
-    }to{
+    }
+
+    to {
         max-height: 50px;
     }
 }
 
-#investimento + .adestra-invest,
-#investimento-consulta + .adestra-invest{
+#investimento+.adestra-invest,
+#investimento-consulta+.adestra-invest {
     margin-top: 8px;
     max-height: 0px;
     opacity: 0;
@@ -335,35 +371,37 @@ section.adestramento{
     display: none;
 }
 
-#investimento:checked + .adestra-invest,
-#investimento-consulta:checked + .adestra-invest{
+#investimento:checked+.adestra-invest,
+#investimento-consulta:checked+.adestra-invest {
     display: grid;
     animation: mostrarAdestraInvest .2s forwards,
-    showContent .2s .1s forwards;
+        showContent .2s .1s forwards;
 }
 
-@keyframes mostrarAdestraInvest{
-    from{
+@keyframes mostrarAdestraInvest {
+    from {
         max-height: 0px;
-    }to{
+    }
+
+    to {
         max-height: 80px;
     }
 }
 
-.adestra-invest{
+.adestra-invest {
     margin-top: 8px;
     display: grid;
-    gap:4px;
+    gap: 4px;
     grid-template-columns: 2fr 1fr;
     justify-content: left;
 }
 
-.adestra-invest p{
+.adestra-invest p {
     font-size: .825rem;
     grid-column: span 2;
 }
 
-.adestra-agende{
+.adestra-agende {
     background: rgba(215, 185, 238, 0.2);
     border: 1px solid #D7B9EE;
     border-radius: 5px;
@@ -374,23 +412,23 @@ section.adestramento{
     max-width: 462px;
 }
 
-.adestra-invest + p{
+.adestra-invest+p {
     margin: 12px 0;
 }
 
-p.retorno{
+p.retorno {
     padding-top: 4px;
     font-size: .825rem;
 }
 
-.adestra-invest ~ p:not(.retorno){
+.adestra-invest~p:not(.retorno) {
     text-align: center;
     position: relative;
     padding-top: 8px;
 }
 
-.adestra-invest ~ p:not(.retorno)::before{
-    content:'';
+.adestra-invest~p:not(.retorno)::before {
+    content: '';
     display: block;
     width: 200px;
     height: 2px;
@@ -400,7 +438,7 @@ p.retorno{
     margin: auto;
 }
 
-.atendimento-contato{
+.atendimento-contato {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -408,7 +446,7 @@ p.retorno{
     margin-top: 8px;
 }
 
-.atendimento-contato :is(label, a){
+.atendimento-contato :is(label, a) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -423,11 +461,11 @@ p.retorno{
 
     border-radius: 5px;
     text-transform: uppercase;
-    background: linear-gradient(180deg, #edd6ff,#e3cef5);
+    background: linear-gradient(180deg, #edd6ff, #e3cef5);
 }
 
-.atendimento-contato label::before{
-    content:'';
+.atendimento-contato label::before {
+    content: '';
     background: url('../../img/mail-circle.svg') center center;
     background-size: cover;
     display: block;
@@ -436,8 +474,8 @@ p.retorno{
     height: 1rem;
 }
 
-.atendimento-contato a::before{
-    content:'';
+.atendimento-contato a::before {
+    content: '';
     background: url('../../img/icons8-whatsapp.svg') center center;
     background-size: cover;
     display: block;

@@ -1,32 +1,32 @@
-import BlackFriday from './black-friday.js';
+// import BlackFriday from './black-friday.js';
 
-BlackFriday();
+// BlackFriday();
 
 let module, moduleSuccess
-try{
+try {
     module = await import('./firebase.js')
     moduleSuccess = true;
-}catch(e){
+} catch (e) {
     moduleSuccess = false
 }
 
-function closeModal(modal, email = false){
-    modal.addEventListener('click',({target, currentTarget})=>{
-        if(target === currentTarget){
-            if(email){
+function closeModal(modal, email = false) {
+    modal.addEventListener('click', ({ target, currentTarget }) => {
+        if (target === currentTarget) {
+            if (email) {
                 checkboxesChecked['email-open-close'].checked = false
                 return
-            } 
+            }
             resetOptions()
-            if(response === "done"){
+            if (response === "done") {
                 console.log(response) // Enviar outra mensagem?
-            } 
+            }
         }
     })
 }
 
-function resetOptions(email = false){
-    for(let item in checkboxesChecked){
+function resetOptions(email = false) {
+    for (let item in checkboxesChecked) {
         checkboxesChecked[item].checked = false
     }
 }
@@ -35,16 +35,20 @@ function resetOptions(email = false){
 // ATENDIMENTO MODAL
 const modalAtend = document.querySelector('.atendimento-modal')
 const checkboxesAndRadios = document.querySelectorAll('.check-modal')
-const checkboxes = Array.from(checkboxesAndRadios).filter((e)=>e.type === "checkbox")
-const radios = Array.from(checkboxesAndRadios).filter((e)=>e.type === "radio")
+const checkboxes = Array.from(checkboxesAndRadios).filter((e) => e.type === "checkbox")
+const radios = Array.from(checkboxesAndRadios).filter((e) => e.type === "radio")
 
 const checkboxesChecked = {}
-checkboxes.forEach((item)=>{
+checkboxes.forEach((item) => {
     checkboxesChecked[item.id] = item
 })
 
-checkboxesChecked['atendimento-open-close'].addEventListener('click',({target})=>{
-    if(!target.checked) resetOptions() 
+checkboxesChecked['atendimento-open-close'].addEventListener('click', ({ target }) => {
+    if (!target.checked) resetOptions()
+})
+
+checkboxesChecked['ferias-open-close'].addEventListener('click', ({ target }) => {
+    if (target.checked) resetOptions()
 })
 
 closeModal(modalAtend)
@@ -56,37 +60,47 @@ const modalEmail = document.querySelector('.email-modal')
 closeModal(modalEmail, true)
 //FIM EMAIL MODAL
 
+// MODAL DE FÉRIAS
+const modalFerias = document.querySelector('.ferias-modal')
+const closeModalFerias = document.querySelector('.btn-close-ferias-modal')
+
+setTimeout(() => checkboxesChecked['ferias-open-close'].checked = true, 1500)
+closeModalFerias?.addEventListener('click', () => {
+    checkboxesChecked['ferias-open-close'].checked = false
+})
+// FIM DE MODAL DE FÉRIAS
+
 // Caso firebase esteja fora do ar, modal de formulário desativado
-function desativarMensagem(){
-    const contatoForm = radios.find((e)=>e.id === "check-mensagem")
+function desativarMensagem() {
+    const contatoForm = radios.find((e) => e.id === "check-mensagem")
     const contatoFormBtn = document.querySelector('.mensagem-btn')
-    const contatoEmail = radios.find((e)=>e.id === "check-email")
+    const contatoEmail = radios.find((e) => e.id === "check-email")
     contatoForm.checked = false
     contatoEmail.checked = true
     contatoFormBtn.classList.add('disable')
 }
 
-    if(!moduleSuccess){
-        desativarMensagem()
-        modalEmail.children[0].classList.add('inativo')
-    } 
+if (!moduleSuccess) {
+    desativarMensagem()
+    modalEmail.children[0].classList.add('inativo')
+}
 // Caso firebase esteja fora do ar
 
 
 // COPY TO CLIPBOARD
-(()=>{
+(() => {
     const btnCopiar = document.querySelector('.copiar');
     const email = document.querySelector('.email-endereco');
     const toast = document.querySelector('.toast-copied');
 
-    btnCopiar?.addEventListener('click',()=> {
+    btnCopiar?.addEventListener('click', () => {
         window.navigator.clipboard.writeText(email.innerText);
         toast.classList.add('active')
         btnCopiar.classList.add('copied')
-        setTimeout(()=>{
-            toast.classList.remove('active')  
+        setTimeout(() => {
+            toast.classList.remove('active')
             btnCopiar.classList.remove('copied')
-        }, 1500) 
+        }, 1500)
     });
 })()
 // FIM COPY TO CLIPBOARD
@@ -97,31 +111,31 @@ const form = document.getElementById('mensagem')
 const loading = document.querySelector('.loading')
 let response = null;
 
-form.addEventListener('submit',async e=>{
+form.addEventListener('submit', async e => {
     e.preventDefault();
     const nome = DOMPurify.sanitize(document.getElementById('nome').value)
     const email = DOMPurify.sanitize(document.getElementById('email').value)
     const msg = DOMPurify.sanitize(document.getElementById('msg').value)
 
-    if(nome && email && msg.trim().replaceAll(' ','').length !== 0){
+    if (nome && email && msg.trim().replaceAll(' ', '').length !== 0) {
         loading.classList.add('active')
         console.log(email.toLowerCase())
         response = await enviarMensagem(nome, email.toLowerCase(), msg)
         loading.classList.remove('active')
         loading.classList.add(response)
-        if(response === 'error'){
+        if (response === 'error') {
             desativarMensagem()
         }
-    }else{
+    } else {
         form.classList.add('error')
-        window.setTimeout(()=>form.classList.remove('error'), 2500)
+        window.setTimeout(() => form.classList.remove('error'), 2500)
     }
 })
- 
 
- async function enviarMensagem(nome, email, msg){
-     try {
-        const {addDoc, collection, db} = module //await import('./firebase.js')
+
+async function enviarMensagem(nome, email, msg) {
+    try {
+        const { addDoc, collection, db } = module //await import('./firebase.js')
         // const data = new Date();
         // const hora = String(data.getHours()+"h"+data.getMinutes()+"m");
         // const dia = String(data.getDate()).padStart(2, '0');
@@ -145,10 +159,10 @@ form.addEventListener('submit',async e=>{
         });
         console.log("Mensagem enviada com ID: ", docRef.id);
         return 'done'
-     } catch (e) {
+    } catch (e) {
         console.error("Erro ao enviar mensagem: ", e);
         return 'error'
-     } 
- }
+    }
+}
 
 // FIM FORMULÁRIO DE MSG
