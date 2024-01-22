@@ -1,7 +1,6 @@
 // import BlackFriday from './black-friday.js';
 
 // BlackFriday();
-
 let module, moduleSuccess
 try {
     module = await import('./firebase.js')
@@ -47,9 +46,12 @@ checkboxesChecked['atendimento-open-close'].addEventListener('click', ({ target 
     if (!target.checked) resetOptions()
 })
 
-checkboxesChecked['ferias-open-close'].addEventListener('click', ({ target }) => {
-    if (target.checked) resetOptions()
-})
+/**
+ * CHECKBOX FERIAS
+ */
+// checkboxesChecked['ferias-open-close'].addEventListener('click', ({ target }) => {
+//     if (target.checked) resetOptions()
+// })
 
 closeModal(modalAtend)
 
@@ -61,13 +63,13 @@ closeModal(modalEmail, true)
 //FIM EMAIL MODAL
 
 // MODAL DE FÉRIAS
-const modalFerias = document.querySelector('.ferias-modal')
-const closeModalFerias = document.querySelector('.btn-close-ferias-modal')
+// const modalFerias = document.querySelector('.ferias-modal')
+// const closeModalFerias = document.querySelector('.btn-close-ferias-modal')
 
-setTimeout(() => checkboxesChecked['ferias-open-close'].checked = true, 1500)
-closeModalFerias?.addEventListener('click', () => {
-    checkboxesChecked['ferias-open-close'].checked = false
-})
+// setTimeout(() => checkboxesChecked['ferias-open-close'].checked = true, 1500)
+// closeModalFerias?.addEventListener('click', () => {
+//     checkboxesChecked['ferias-open-close'].checked = false
+// })
 // FIM DE MODAL DE FÉRIAS
 
 // Caso firebase esteja fora do ar, modal de formulário desativado
@@ -86,13 +88,11 @@ if (!moduleSuccess) {
 }
 // Caso firebase esteja fora do ar
 
-
 // COPY TO CLIPBOARD
 (() => {
     const btnCopiar = document.querySelector('.copiar');
     const email = document.querySelector('.email-endereco');
     const toast = document.querySelector('.toast-copied');
-
     btnCopiar?.addEventListener('click', () => {
         window.navigator.clipboard.writeText(email.innerText);
         toast.classList.add('active')
